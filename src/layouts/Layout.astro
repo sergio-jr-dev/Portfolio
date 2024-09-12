@@ -22,7 +22,7 @@ const { title, description } = Astro.props;
   </head>
 
   <body
-    class="bg-cover [background:radial-gradient(100%_100%_at_50%_10%,#000_30%,#090c9b_100%)]"
+    class="bg-cover dark:[background:radial-gradient(100%_100%_at_50%_10%,#000_30%,#090c9b_100%)] [background:radial-gradient(100%_100%_at_50%_10%,#efefef_40%,#2025ff_100%)]"
   >
     <Header />
     <main>
@@ -37,8 +37,12 @@ const { title, description } = Astro.props;
 
   html {
     scrollbar-width: thin;
-    scrollbar-color: #090c9b #facd15;
+    scrollbar-color: #2025ff #9aff00;
     scroll-behavior: smooth;
+
+    &.dark {
+      scrollbar-color: #090c9b #e7a702;
+    }
 
     @media (prefers-reduce-motion: reduce) {
       scroll-behavior: auto;
