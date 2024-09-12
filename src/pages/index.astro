@@ -1,26 +1,51 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Badge from "../components/Badge.astro";
+import Badge from "@/components/Badge.astro";
+import IconPill from "@/components/IconPill.astro";
+import GitHubIcon from "@/icons/GitHubIcon.astro";
+import LinkedinIcon from "@/icons/LinkedinIcon.astro";
+import GmailIcon from "@/icons/GmailIcon.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <section class="w-full lg:w-[740px] mx-auto py-44">
-      <h1 class="text-white text-5xl font-bold flex items-center gap-x-4 pb-10">
-        Hey, soy Sergio
-        <a
-          href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Badge>Disponible para trabajar</Badge>
-        </a>
-      </h1>
-      <h2 class="text-xl opacity-80">
-        Estusiasta de las tecnologías. Desarrollador especializado en frontend,
-        programando des desde Albacete, España 🇪🇸.
-      </h2>
-      <ul></ul>
-    </section>
-  </main>
+  <section class="w-full lg:w-[740px] mx-auto py-44">
+    <img
+      class="rounded-full w-12 h-12 object-cover mb-4"
+      src="./images/perfil-linkdin.jpg"
+      alt="Perfil Sergio"
+    />
+
+    <h1 class="text-white text-5xl font-bold flex items-center gap-x-4 pb-10">
+      Hey, soy Sergio
+      <a
+        href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
+        target="_blank"
+        rel="noopener"
+      >
+        <Badge>Disponible para trabajar</Badge>
+      </a>
+    </h1>
+    <h2 class="text-2xl text-pretty">
+      Estusiasta de las tecnologías. Desarrollador especializado en frontend,
+      programando desde Albacete, España.
+    </h2>
+
+    <nav class="flex gap-3 mt-4">
+      <IconPill
+        href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
+        brand="Linkedin"
+      >
+        <LinkedinIcon class="w-6 h-6" />
+        Linkedin
+      </IconPill>
+      <IconPill href="https://github.com/sergio-jr-dev" brand="GitHub">
+        <GitHubIcon class="w-6 h-6" />
+        GitHub
+      </IconPill>
+      <IconPill href="mailto:sjr.social@gmail.com" brand="Gmail">
+        <GmailIcon class="w-6 h-6" />
+        sjr.social@gmail.com
+      </IconPill>
+    </nav>
+  </section>
 </Layout>
