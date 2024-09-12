@@ -7,10 +7,13 @@ import GmailIcon from "@/icons/GmailIcon.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout
+  title="Portfolio de Sergio Jiménez. Desarrollador y programador web enfocado en frontend."
+  description="Descubre mi portafolio donde encontrarás mis proyectos más destacados y conocerás a fondo mis conocimientos."
+>
   <section class="w-full lg:w-[740px] mx-auto py-44">
     <img
-      class="rounded-full w-12 h-12 object-cover mb-4"
+      class="rounded-full size-12 object-cover mb-4"
       src="./images/perfil-linkdin.jpg"
       alt="Perfil Sergio"
     />
@@ -35,15 +38,15 @@ import Layout from "@/layouts/Layout.astro";
         href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
         brand="Linkedin"
       >
-        <LinkedinIcon class="w-6 h-6" />
+        <LinkedinIcon class="size-6" />
         Linkedin
       </IconPill>
       <IconPill href="https://github.com/sergio-jr-dev" brand="GitHub">
-        <GitHubIcon class="w-6 h-6" />
+        <GitHubIcon class="size-6" />
         GitHub
       </IconPill>
       <IconPill href="mailto:sjr.social@gmail.com" brand="Gmail">
-        <GmailIcon class="w-6 h-6" />
+        <GmailIcon class="size-6" />
         sjr.social@gmail.com
       </IconPill>
     </nav>
