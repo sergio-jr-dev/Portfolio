@@ -8,6 +8,8 @@ import GitHubIcon from "@/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/icons/LinkedinIcon.astro";
 import GmailIcon from "@/icons/GmailIcon.astro";
 import BriefCaseIcon from "@/icons/BriefCaseIcon.astro";
+import { Image } from "astro:assets";
+import profileImg from "@/assets/images/perfil-linkdin.jpg";
 ---
 
 <Layout
@@ -15,10 +17,11 @@ import BriefCaseIcon from "@/icons/BriefCaseIcon.astro";
   description="Descubre mi portafolio donde encontrarás mis proyectos más destacados y conocerás a fondo mis conocimientos."
 >
   <Container>
-    <img
-      class="rounded-full size-12 object-cover mb-4"
-      src="./images/perfil-linkdin.jpg"
+    <Image
+      src={profileImg}
       alt="Perfil Sergio"
+      loading="eager"
+      class="rounded-full size-20 object-cover object-top mb-4 shadow-white shadow-sm"
     />
 
     <h1
