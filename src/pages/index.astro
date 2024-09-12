@@ -1,17 +1,20 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import Badge from "@/components/Badge.astro";
 import IconPill from "@/components/IconPill.astro";
+import Experience from "@/components/Experience.astro";
+import Container from "@/components/Container.astro";
 import GitHubIcon from "@/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/icons/LinkedinIcon.astro";
 import GmailIcon from "@/icons/GmailIcon.astro";
-import Layout from "@/layouts/Layout.astro";
+import BriefCaseIcon from "@/icons/BriefCaseIcon.astro";
 ---
 
 <Layout
   title="Portfolio de Sergio Jiménez. Desarrollador y programador web enfocado en frontend."
   description="Descubre mi portafolio donde encontrarás mis proyectos más destacados y conocerás a fondo mis conocimientos."
 >
-  <section class="w-full lg:w-[740px] mx-auto py-44">
+  <Container>
     <img
       class="rounded-full size-12 object-cover mb-4"
       src="./images/perfil-linkdin.jpg"
@@ -50,5 +53,13 @@ import Layout from "@/layouts/Layout.astro";
         sjr.social@gmail.com
       </IconPill>
     </nav>
-  </section>
+  </Container>
+
+  <Container>
+    <h2 class="font-semibold text-2xl flex items-center gap-x-2">
+      <BriefCaseIcon class="size-7" />
+      Experiencia laboral
+    </h2>
+    <Experience />
+  </Container>
 </Layout>
