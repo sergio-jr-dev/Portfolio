@@ -38,6 +38,11 @@ const { title, description } = Astro.props;
   html {
     scrollbar-width: thin;
     scrollbar-color: #090c9b #facd15;
+    scroll-behavior: smooth;
+
+    @media (prefers-reduce-motion: reduce) {
+      scroll-behavior: auto;
+    }
   }
 
   body {
