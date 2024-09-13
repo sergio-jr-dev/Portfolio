@@ -1,5 +1,6 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import socratechLogo from "../assets/logo-socratech.png";
 
 const EXPERIENCE = [
   {
@@ -9,6 +10,7 @@ const EXPERIENCE = [
     description:
       "Doy clases de maquetación y Git. Ayudo con los proyectos en la parte de maquetación, front y back. Genero contenido de programación en YouTube. Galardonados con el premio a Mejor Escuela de Tecnología 2024 por El Suplemento.",
     link: "https://socratech.es",
+    src: socratechLogo,
   },
   {
     date: "Septiembre 2022 - Febrero 2023",
@@ -16,16 +18,24 @@ const EXPERIENCE = [
     company: "Socratech",
     description:
       "Bootcamp Full-Stack con algunas tecnologías como: CSS, HTML, Bootstrap, Sass, JavaScript, React, Node JS, Express, MySQL, Git, etc. Proyecto final realizado para la empresa Beemeral.",
+    link: "https://socratech.es",
+    src: socratechLogo,
   },
 ];
 ---
 
-<ol class="relative flex flex-col gap-y-12">
+<ol
+  class="relative ms-5 flex flex-col gap-y-14 border-s border-gray-200 dark:border-gray-700"
+>
   {
-    EXPERIENCE.map((experience) => (
-      <li>
-        <ExperienceItem {...experience} />
-      </li>
+    EXPERIENCE.map((experience, i) => (
+      <ExperienceItem {...experience}>
+        {i === 0 && (
+          <span class="me-2 ms-3 rounded bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
+            Actual
+          </span>
+        )}
+      </ExperienceItem>
     ))
   }
 </ol>

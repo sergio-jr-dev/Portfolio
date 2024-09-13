@@ -1,38 +1,43 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
   company: string;
   description: string;
   date: string;
+  src: ImageMetadata;
 }
 
-const { title, company, description, date } = Astro.props;
+const { title, company, description, date, src } = Astro.props;
 ---
 
-<div
-  class="md:space-x-4] relative mx-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 before:content-[''] dark:before:border-white/15 md:grid-cols-5 md:gap-10"
->
-  <div class="relative md:col-span-2">
-    <div class="sticky top-0">
-      <span
-        class="absolute -left-[42px] rounded-full text-5xl text-[#9aff00] dark:text-[#e7a702]"
-        >&bull;</span
-      >
-
-      <h3 class="text-xl font-bold text-[#9aff00] dark:text-[#e7a702]">
-        {title}
-      </h3>
-      <h4 class="text-xl font-semibold text-gray-950 dark:text-white">
-        {company}
-      </h4>
-      <time class="m-0 p-0 text-sm text-gray-950/90 dark:text-white/90"
-        >{date}</time
-      >
-    </div>
-  </div>
-  <div
-    class="relative flex flex-col gap-2 text-pretty text-gray-950 dark:text-gray-100 md:col-span-3"
+<li class="ms-8">
+  <span
+    class="absolute -start-3 flex size-8 items-center justify-center rounded-full bg-blue-100 ring-4 ring-white dark:bg-blue-900 dark:ring-gray-900"
   >
+    <Image
+      class="rounded-full"
+      src={src}
+      alt={`Logo de ${company}`}
+      loading="eager"
+    />
+  </span>
+  <h3
+    class="mb-1 flex items-center text-xl font-bold text-[#9aff00] dark:text-[#e7a702]"
+  >
+    {title}
+    <slot />
+  </h3>
+  <h4 class="text-lg font-semibold text-gray-950 dark:text-white">
+    {company}
+  </h4>
+  <time
+    class="mb-3 block text-sm font-normal leading-none text-gray-700 dark:text-gray-500"
+  >
+    {date}
+  </time>
+  <p class="text-base font-normal text-gray-800 dark:text-gray-400">
     {description}
-  </div>
-</div>
+  </p>
+</li>
