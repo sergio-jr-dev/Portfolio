@@ -10,28 +10,28 @@ const { title, company, description, date } = Astro.props;
 ---
 
 <div
-  class="relative mx-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4]"
+  class="md:space-x-4] relative mx-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 before:content-[''] dark:before:border-white/15 md:grid-cols-5 md:gap-10"
 >
   <div class="relative md:col-span-2">
     <div class="sticky top-0">
       <span
-        class="text-[#9aff00] dark:text-[#e7a702] -left-[42px] absolute rounded-full text-5xl"
+        class="absolute -left-[42px] rounded-full text-5xl text-[#9aff00] dark:text-[#e7a702]"
         >&bull;</span
       >
 
       <h3 class="text-xl font-bold text-[#9aff00] dark:text-[#e7a702]">
         {title}
       </h3>
-      <h4 class="font-semibold text-xl text-gray-950 dark:text-white">
+      <h4 class="text-xl font-semibold text-gray-950 dark:text-white">
         {company}
       </h4>
-      <time class="p-0 m-0 text-sm text-gray-950/90 dark:text-white/90"
+      <time class="m-0 p-0 text-sm text-gray-950/90 dark:text-white/90"
         >{date}</time
       >
     </div>
   </div>
   <div
-    class="relative flex flex-col gap-2 text-gray-950 dark:text-gray-100 md:col-span-3 text-pretty"
+    class="relative flex flex-col gap-2 text-pretty text-gray-950 dark:text-gray-100 md:col-span-3"
   >
     {description}
   </div>
