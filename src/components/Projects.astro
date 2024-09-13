@@ -1,0 +1,74 @@
+---
+import HTMLIcon from "@/icons/HTMLIcon.astro";
+import CSSIcon from "@/icons/CSSIcon.astro";
+import screenshotBeemeral from "../assets/screenshot-beemeral.webp";
+import { Image } from "astro:assets";
+import TechnologyPill from "./TechnologyPill.astro";
+import IconPill from "./IconPill.astro";
+import GitHubIcon from "@/icons/GitHubIcon.astro";
+import ExternalLinkIcon from "@/icons/ExternalLinkIcon.astro";
+
+const projects = [
+  {
+    title: "Beemeral",
+    description: "Descripción de muestra del proyecto 1",
+    link: "https://www.youtube.com/watch?v=qyCSiWPc548",
+    github: "https://github.com/reposocratech/Beemeral",
+    image: screenshotBeemeral,
+    tags: [
+      { name: "HTML", icon: HTMLIcon },
+      { name: "CSS", icon: CSSIcon },
+    ],
+  },
+  {
+    title: "Proyecto 2",
+    description: "Descripción de muestra del proyecto 2",
+    link: "https://www.youtube.com/watch?v=qyCSiWPc548",
+    github: "https://github.com/reposocratech/Beemeral",
+    image: screenshotBeemeral,
+    tags: [
+      { name: "HTML", icon: HTMLIcon },
+      { name: "CSS", icon: CSSIcon },
+    ],
+  },
+];
+---
+
+<div class="grid grid-cols-12 gap-4">
+  {
+    projects.map(({ title, description, link, github, image, tags }) => (
+      <article class="flex flex-col gap-y-3 bg-slate-100/10 hover:opacity-80 p-6 rounded-2xl shadow-sm shadow-slate-400 col-span-6">
+        <h3 class="text-xl font-bold text-[#9aff00] dark:text-[#e7a702]">
+          {title}
+        </h3>
+        <p class="text-gray-950 dark:text-gray-100 text-pretty">
+          {description}
+        </p>
+        <ul class="flex gap-3">
+          {tags.map((tag) => (
+            <li>
+              <TechnologyPill>
+                <tag.icon class="size-4" /> {tag.name}
+              </TechnologyPill>
+            </li>
+          ))}
+        </ul>
+        <Image
+          class="rounded-xl"
+          src={image}
+          alt={`Captura de pantalla del proyecto ${title}`}
+        />
+        <div class="flex gap-x-3">
+          <IconPill href={github}>
+            <GitHubIcon class="size-6" />
+            GitHub
+          </IconPill>
+          <IconPill href={link}>
+            <ExternalLinkIcon class="size-6" />
+            Ver proyecto
+          </IconPill>
+        </div>
+      </article>
+    ))
+  }
+</div>

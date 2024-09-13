@@ -1,15 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
 import Badge from "@/components/Badge.astro";
 import IconPill from "@/components/IconPill.astro";
 import Experience from "@/components/Experience.astro";
-import Container from "@/components/Container.astro";
 import GitHubIcon from "@/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/icons/LinkedinIcon.astro";
 import GmailIcon from "@/icons/GmailIcon.astro";
 import BriefCaseIcon from "@/icons/BriefCaseIcon.astro";
+import ProyectsIcon from "@/icons/ProjectsIcon.astro";
 import { Image } from "astro:assets";
 import profileImg from "../assets/perfil-linkedin.jpg";
+import Projects from "@/components/Projects.astro";
 ---
 
 <Layout
@@ -21,11 +23,11 @@ import profileImg from "../assets/perfil-linkedin.jpg";
       src={profileImg}
       alt="Perfil Sergio"
       loading="eager"
-      class="rounded-full size-20 object-cover object-top mb-4 shadow-white shadow-sm"
+      class="rounded-full size-20 object-cover object-top mb-4 shadow-sm shadow-slate-400"
     />
 
     <h1
-      class="text-gray-600 dark:text-gray-100 text-5xl font-bold flex items-center gap-x-4 pb-10"
+      class="text-gray-600 dark:text-gray-100 text-3xl lg:text-5xl font-bold flex flex-wrap items-center gap-x-4 pb-10"
     >
       Sergio Jiménez
       <a
@@ -36,12 +38,14 @@ import profileImg from "../assets/perfil-linkedin.jpg";
         <Badge>No disponible</Badge>
       </a>
     </h1>
-    <h2 class="text-gray-600 dark:text-gray-100 text-2xl text-pretty">
+    <h2
+      class="text-gray-600 dark:text-gray-100 text-lg lg:text-2xl text-pretty"
+    >
       Estusiasta de las tecnologías. Desarrollador especializado en frontend,
       programando desde Albacete, España.
     </h2>
 
-    <nav class="flex gap-x-4 mt-4 text-gray-600 dark:text-gray-100">
+    <nav class="flex flex-wrap gap-4 mt-4 text-gray-600 dark:text-gray-100">
       <IconPill
         href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
         brand="Linkedin"
@@ -62,11 +66,21 @@ import profileImg from "../assets/perfil-linkedin.jpg";
 
   <Container id="experience">
     <h2
-      class="font-semibold text-2xl flex items-center gap-x-2 text-gray-950 dark:text-white"
+      class="font-extrabold text-2xl flex items-center gap-x-2 text-gray-950 dark:text-white mb-10"
     >
       <BriefCaseIcon class="size-7" />
       Experiencia laboral
     </h2>
     <Experience />
+  </Container>
+
+  <Container id="projects">
+    <h2
+      class="font-extrabold text-2xl flex items-center gap-x-2 text-gray-950 dark:text-white mb-10"
+    >
+      <ProyectsIcon class="size-7" />
+      Proyectos
+    </h2>
+    <Projects />
   </Container>
 </Layout>
