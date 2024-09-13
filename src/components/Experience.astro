@@ -20,10 +20,10 @@ const EXPERIENCE = [
 ];
 ---
 
-<ol class="relative mt-12">
+<ol class="relative mt-12 flex flex-col gap-y-12">
   {
     EXPERIENCE.map((experience) => (
-      <li class="">
+      <li>
         <ExperienceItem {...experience} />
       </li>
     ))
