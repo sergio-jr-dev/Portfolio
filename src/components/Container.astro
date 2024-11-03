@@ -8,11 +8,5 @@ const { id, title } = Astro.props;
 ---
 
 <section id={id} class="scroll mx-auto w-full max-w-5xl px-5 py-28">
-  <h2
-    class="mb-10 flex items-center gap-x-2 text-2xl font-extrabold text-slate-900 dark:text-slate-100"
-  >
-    <slot name="title-icon" />
-    {title}
-  </h2>
   <slot />
 </section>
