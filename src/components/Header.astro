@@ -1,5 +1,5 @@
 ---
-import ThemeSelector from "./ThemeSelector.astro";
+import ThemeSelector from './ThemeSelector.astro';
 ---
 
 <header class="fixed left-0 right-0 top-2 z-10 mx-auto max-w-5xl">
@@ -16,31 +16,31 @@ import ThemeSelector from "./ThemeSelector.astro";
 </header>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("a");
+  document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('a');
 
     const updateActiveLink = () => {
-      let currentSection = "";
+      let currentSection = '';
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
         if (window.scrollY >= sectionTop - sectionHeight / 3) {
-          currentSection = section.getAttribute("id");
+          currentSection = section.getAttribute('id');
         }
       });
 
       navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(currentSection)) {
-          link.classList.add("active");
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(currentSection)) {
+          link.classList.add('active');
         }
       });
     };
 
-    window.addEventListener("scroll", updateActiveLink);
+    window.addEventListener('scroll', updateActiveLink);
   });
 </script>
 
