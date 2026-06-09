@@ -1,12 +1,14 @@
 ---
 interface Props {
   id: string;
-  title?: string;
 }
 
-const { id, title } = Astro.props;
+const { id } = Astro.props;
 ---
 
-<section id={id} class="scroll mx-auto w-full max-w-5xl px-5 py-28">
+<section
+  id={id}
+  class="mx-auto w-full max-w-5xl scroll-mt-28 px-5 py-24 md:py-28"
+>
   <slot />
 </section>

@@ -1,9 +1,19 @@
+---
+interface Props {
+  href: string;
+  brand?: string;
+  label?: string;
+}
+
+const { href, label } = Astro.props;
+---
+
 <a
-  class="flex items-center justify-center gap-x-2 rounded-full border border-gray-300 bg-gray-100 px-4 py-2 text-gray-700 transition hover:scale-110 hover:bg-gray-100/10 dark:border-white/10 dark:bg-white/5 dark:text-gray-200 dark:hover:bg-white/10"
-  href={Astro.props.href}
+  class="border-border bg-surface-elevated text-muted hover:border-primary hover:bg-primary-soft hover:text-primary-strong focus-visible:ring-ring focus-visible:ring-offset-background flex min-w-0 items-center justify-center gap-x-2 rounded-full border px-4 py-2 shadow-sm shadow-black/5 transition-[background-color,color,border-color,transform] duration-200 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+  href={href}
   target="_blank"
   rel="noopener noreferrer"
-  aria-label=`Icono de ${Astro.props.brand}`
+  aria-label={label}
 >
   <slot />
 </a>

@@ -4,27 +4,33 @@ import ThemeIcon from "@/icons/ThemeIcon.astro";
 
 <button
   id="themeToggle"
-  class="border-none bg-transparent"
+  class="text-muted hover:border-border hover:bg-accent-soft hover:text-foreground focus-visible:ring-ring focus-visible:ring-offset-background flex size-9 flex-none items-center justify-center rounded-full border border-transparent bg-transparent transition-[background-color,color,border-color] duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
   aria-label="Cambiar entre modo claro y modo oscuro"
+  aria-pressed="false"
+  type="button"
 >
-  <ThemeIcon />
+  <ThemeIcon class="size-5" aria-hidden="true" />
 </button>
 
 <script is:inline>
   const html = document.documentElement;
-  const theme =
-    localStorage.getItem("theme") ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
+  const themeToggle = document.getElementById("themeToggle");
+  const storedTheme = localStorage.getItem("theme");
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 
-  html.classList.toggle("dark", theme === "dark");
+  const setTheme = (theme) => {
+    const isDark = theme === "dark";
 
-  document.getElementById("themeToggle").addEventListener("click", () => {
-    html.classList.toggle("dark");
-    localStorage.setItem(
-      "theme",
-      html.classList.contains("dark") ? "dark" : "light"
-    );
+    html.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", theme);
+    themeToggle?.setAttribute("aria-pressed", String(isDark));
+  };
+
+  setTheme(storedTheme || systemTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    setTheme(html.classList.contains("dark") ? "light" : "dark");
   });
 </script>

@@ -1,7 +1,7 @@
 ---
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
-import '@fontsource-variable/onest';
+import '@fontsource-variable/onest/index.css';
 
 import '../styles/global.css';
 
@@ -14,21 +14,40 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html
+  lang="es"
+  class="scrollbar-thin scrollbar-thumb-primary selection:bg-primary-soft selection:color-primary-strong scroll-smooth"
+>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta
+      name="theme-color"
+      content="#f7faf8"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#071412"
+      media="(prefers-color-scheme: dark)"
+    />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
   </head>
 
   <body
-    class="bg-cover [background:radial-gradient(115%_115%_at_50%_10%,#efefef_10%,#2025ff_100%)] dark:[background:radial-gradient(115%_115%_at_50%_10%,#000_10%,#090c9b_100%)]"
+    class="flex min-h-dvh flex-col bg-[linear-gradient(rgb(255_255_255/96%)),url('/bg-light.png')] antialiased dark:bg-[linear-gradient(rgb(0_0_0/94%)),url('/bg-dark.png')]"
   >
+    <a
+      class="focus:bg-surface focus:text-primary-strong focus-visible:ring-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:shadow-lg focus:outline-none focus-visible:ring-2"
+      href="#main-content"
+    >
+      Saltar al contenido
+    </a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
@@ -36,25 +55,7 @@ const { title, description } = Astro.props;
 </html>
 
 <style is:global>
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: #dbeafe #6d28d9;
-    scroll-behavior: smooth;
-
-    &.dark {
-      scrollbar-color: #1d3a8a #f59e0b;
-    }
-
-    @media (prefers-reduce-motion: reduce) {
-      scroll-behavior: auto;
-    }
-  }
-
   body {
-    background-color: #050505;
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
     font-family: 'Onest Variable';
   }
 </style>

@@ -1,0 +1,60 @@
+---
+const HIGHLIGHTS = [
+  {
+    title: "Producto y aprendizaje",
+    description:
+      "He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.",
+  },
+  {
+    title: "Frontend con criterio",
+    description:
+      "Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.",
+  },
+  {
+    title: "IA aplicada",
+    description:
+      "Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.",
+  },
+];
+---
+
+<div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+  <div>
+    <p
+      class="text-primary-strong mb-3 text-sm font-bold uppercase tracking-[0.18em]"
+    >
+      Sobre Mí
+    </p>
+    <h2
+      class="text-foreground text-balance text-3xl font-black tracking-tight md:text-4xl"
+    >
+      Desarrollo interfaces y herramientas que convierten ideas en producto
+      usable.
+    </h2>
+  </div>
+
+  <div class="text-muted space-y-5 text-pretty text-lg leading-8">
+    <p>
+      Soy desarrollador Frontend / Full Stack con experiencia en aplicaciones
+      web, herramientas propias y acompañamiento técnico. En SocraTech combino
+      desarrollo, docencia y revisión de proyectos, ayudando a que soluciones de
+      frontend y backend pasen de ejercicio a producto funcional.
+    </p>
+    <p>
+      Mi forma de trabajar mezcla autonomía, enfoque práctico y atención al
+      detalle visual. Me interesa construir sistemas que sean sencillos de usar,
+      fáciles de explicar y sostenibles para seguir evolucionándolos.
+    </p>
+  </div>
+</div>
+
+<div class="mt-10 grid gap-4 md:grid-cols-3">
+  {
+    HIGHLIGHTS.map(({ title, description }) => (
+      <article class="border-border bg-surface-elevated rounded-lg border p-5 shadow-sm shadow-black/5">
+        <h3 class="text-foreground mb-3 text-lg font-extrabold">{title}</h3>
+        <p class="text-muted text-pretty text-sm leading-6">{description}</p>
+      </article>
+    ))
+  }
+</div>

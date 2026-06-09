@@ -1,75 +1,56 @@
 ---
-import HTMLIcon from "@/icons/HTMLIcon.astro";
-import CSSIcon from "@/icons/CSSIcon.astro";
-import screenshotBeemeral from "../assets/screenshot-beemeral.webp";
-import { Image } from "astro:assets";
 import TechnologyPill from "./TechnologyPill.astro";
 import IconPill from "./IconPill.astro";
-import GitHubIcon from "@/icons/GitHubIcon.astro";
 import ExternalLinkIcon from "@/icons/ExternalLinkIcon.astro";
 
 const projects = [
   {
-    title: "Beemeral",
-    description: "Descripción de muestra del proyecto 1",
-    link: "https://www.youtube.com/watch?v=qyCSiWPc548",
-    github: "https://github.com/reposocratech/Beemeral",
-    image: screenshotBeemeral,
-    tags: [
-      { name: "HTML", icon: HTMLIcon },
-      { name: "CSS", icon: CSSIcon },
-    ],
+    title: "BaselineLab",
+    description:
+      "Plataforma en desarrollo con playgrounds y generadores de CSS y HTML, orientada a acelerar pruebas visuales, creación de código y productividad frontend.",
+    link: "https://baselinelab.dev",
+    tags: ["Astro", "TypeScript", "CSS"],
   },
   {
-    title: "Proyecto 2",
-    description: "Descripción de muestra del proyecto 2",
-    link: "https://www.youtube.com/watch?v=qyCSiWPc548",
-    github: "https://github.com/reposocratech/Beemeral",
-    image: screenshotBeemeral,
-    tags: [
-      { name: "HTML", icon: HTMLIcon },
-      { name: "CSS", icon: CSSIcon },
-    ],
+    title: "TemariOS",
+    description:
+      "Aplicación para alumnos de bootcamp donde centralizo guías, recursos, ejercicios, maquetaciones y quizzes para mejorar el seguimiento práctico del aprendizaje.",
+    link: "https://temari-os.vercel.app",
+    tags: ["React 19", "TypeScript", "Supabase"],
+  },
+  {
+    title: "FlipyFriends",
+    description:
+      "Proyecto infantil para seleccionar series animadas y jugar a buscar parejas de cartas, centrado en lógica de interacción, estado y experiencia de usuario.",
+    link: "https://flipifriends.netlify.app",
+    tags: ["React 19", "JavaScript", "CSS"],
   },
 ];
 ---
 
 <h2
-  class="mb-10 flex items-center gap-x-2 text-2xl font-extrabold text-slate-900 dark:text-slate-100"
+  class="text-foreground mb-10 flex items-center gap-x-2 text-balance text-3xl font-black tracking-tight"
 >
   Proyectos
 </h2>
-<div class="grid grid-cols-12 gap-4">
+<div class="grid gap-4 md:grid-cols-3">
   {
-    projects.map(({ title, description, link, github, image, tags }) => (
-      <article class="col-span-6 flex flex-col gap-y-3 rounded-2xl bg-slate-100/10 p-6 shadow-sm shadow-slate-400 hover:opacity-80">
-        <h3 class="text-xl font-bold text-violet-700 dark:text-amber-500">
+    projects.map(({ title, description, link, tags }) => (
+      <article class="border-border bg-surface-elevated flex min-w-0 flex-col gap-y-4 rounded-lg border p-5 shadow-sm shadow-black/5">
+        <h3 class="text-primary-strong break-words text-xl font-extrabold">
           {title}
         </h3>
-        <p class="text-pretty text-gray-950 dark:text-gray-100">
-          {description}
-        </p>
-        <ul class="flex gap-3">
+        <p class="text-muted text-pretty text-sm leading-6">{description}</p>
+        <ul class="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <li>
-              <TechnologyPill>
-                <tag.icon class="size-4" /> {tag.name}
-              </TechnologyPill>
+              <TechnologyPill>{tag}</TechnologyPill>
             </li>
           ))}
         </ul>
-        <Image
-          class="rounded-xl"
-          src={image}
-          alt={`Captura de pantalla del proyecto ${title}`}
-        />
-        <div class="flex gap-x-3">
-          <IconPill href={github}>
-            <GitHubIcon class="size-6" />
-            GitHub
-          </IconPill>
-          <IconPill href={link}>
-            <ExternalLinkIcon class="size-6" />
+        <div class="mt-auto pt-2">
+          <IconPill href={link} label={`Abrir proyecto ${title}`}>
+            <ExternalLinkIcon class="size-5" aria-hidden="true" />
             Ver proyecto
           </IconPill>
         </div>

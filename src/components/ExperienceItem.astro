@@ -14,7 +14,7 @@ const { title, company, description, date, src } = Astro.props;
 
 <li class="ms-8">
   <span
-    class="absolute -start-3 flex size-8 items-center justify-center rounded-full bg-blue-100 ring-4 ring-white dark:bg-blue-900 dark:ring-gray-900"
+    class="border-border bg-surface ring-background absolute -start-4 flex size-8 items-center justify-center rounded-full border ring-4"
   >
     <Image
       class="rounded-full"
@@ -24,20 +24,18 @@ const { title, company, description, date, src } = Astro.props;
     />
   </span>
   <h3
-    class="mb-1 flex items-center text-xl font-bold text-violet-700 dark:text-amber-500"
+    class="text-primary-strong mb-1 flex flex-wrap items-center gap-y-2 text-xl font-extrabold"
   >
     {title}
     <slot />
   </h3>
-  <h4 class="text-lg font-semibold text-gray-950 dark:text-white">
+  <h4 class="text-foreground text-lg font-semibold">
     {company}
   </h4>
-  <time
-    class="mb-3 block text-sm font-normal leading-none text-gray-700 dark:text-gray-500"
-  >
+  <time class="text-subtle mb-3 block text-sm font-medium leading-none">
     {date}
   </time>
-  <p class="text-base font-normal text-gray-800 dark:text-gray-400">
+  <p class="text-muted max-w-3xl text-pretty text-base leading-7">
     {description}
   </p>
 </li>
