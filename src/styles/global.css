@@ -23,6 +23,21 @@
 
   --bg-main:
     linear-gradient(rgb(255 255 255 / 96%)), url("/images/bg-light.webp");
+
+  --animate-nav-shadow: nav-shadow 1s linear both;
+
+  @keyframes nav-shadow {
+    from {
+      background-color: transparent;
+    }
+
+    to {
+      backdrop-filter: blur(15px);
+      box-shadow:
+        rgb(from var(--color-foreground) r g b / 10%) 0 0 5px 0,
+        rgb(from var(--color-foreground) r g b / 10%) 0 0 1px 0;
+    }
+  }
 }
 
 html {

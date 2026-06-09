@@ -1,16 +1,21 @@
 ---
 import ThemeSelector from './ThemeSelector.astro';
+import HeaderLink from './HeaderLink.astro';
+
+const links = [
+  { href: '#start', title: 'Inicio' },
+  { href: '#about', title: 'Sobre Mí' },
+  { href: '#experience', title: 'Experiencia' },
+  { href: '#projects', title: 'Proyectos' },
+];
 ---
 
 <header class="fixed inset-x-0 top-3 z-20 mx-auto max-w-5xl px-3">
   <nav
     aria-label="Navegación principal"
-    class="border-border bg-surface-elevated text-muted mx-auto flex w-full max-w-max items-center gap-2 rounded-full border p-2 text-sm font-medium shadow-sm shadow-black/5 backdrop-blur"
+    class="border-border bg-surface-elevated text-muted animate-nav-shadow mx-auto flex w-full max-w-max items-center rounded-full border p-0.5 shadow-sm shadow-black/5 backdrop-blur [animation-range:50px_150px] [animation-timeline:scroll()] motion-reduce:animate-none"
   >
-    <a href="#start">Inicio</a>
-    <a href="#about">Sobre Mí</a>
-    <a href="#experience">Experiencia</a>
-    <a href="#projects">Proyectos</a>
+    {links.map((link) => <HeaderLink {...link} />)}
     <ThemeSelector />
   </nav>
 </header>
@@ -49,60 +54,3 @@ import ThemeSelector from './ThemeSelector.astro';
     setActiveLink(sections[0].id);
   });
 </script>
-
-<style>
-  nav {
-    animation: nav-shadow 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 50px 150px;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-
-    .active {
-      background: var(--color-primary-soft);
-      color: var(--color-primary-strong);
-      font-weight: 800;
-    }
-  }
-
-  nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  nav a {
-    border-radius: 999px;
-    flex: 0 0 auto;
-    padding: 0.45rem 0.8rem;
-    text-decoration: none;
-    transition:
-      background-color 160ms ease,
-      color 160ms ease;
-  }
-
-  nav a:hover {
-    background: var(--color-accent-soft);
-    color: var(--color-foreground);
-  }
-
-  nav a:focus-visible,
-  nav button:focus-visible {
-    outline: 2px solid var(--color-ring);
-    outline-offset: 3px;
-  }
-
-  @keyframes nav-shadow {
-    from {
-      background-color: transparent;
-      box-shadow: 0 0 0 rgb(0 0 0 / 0);
-    }
-    to {
-      backdrop-filter: blur(10px);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    nav {
-      animation: none;
-    }
-  }
-</style>

@@ -1,0 +1,18 @@
+---
+const { href, title } = Astro.props;
+---
+
+<a
+  href={href}
+  class="hover:text-foreground focus-visible:outline-ring rounded-[calc(infinity*1px-0.125rem)] p-3 transition-colors duration-150 [text-box:trim-both_cap_alphabetic] focus-visible:outline-2"
+>
+  {title}
+</a>
+
+<style>
+  @reference "../styles/global.css";
+
+  a.active {
+    @apply bg-primary-soft text-foreground font-bold;
+  }
+</style>
