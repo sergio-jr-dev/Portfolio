@@ -11,9 +11,6 @@ importers:
       '@astrojs/check':
         specifier: ^0.9.9
         version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.3)(typescript@6.0.3)
-      '@fontsource-variable/onest':
-        specifier: ^5.2.11
-        version: 5.2.11
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.0(vite@7.3.2(jiti@2.7.0)(lightningcss@1.32.0)(yaml@2.8.3))
@@ -292,9 +289,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource-variable/onest@5.2.11':
-    resolution: {integrity: sha512-knJww1KxK4g66+qu90q3CPBvl4zhL5oDRi3/JMkYMmlhW3OgyRgT4MMfgd6jg2lvho7bLPAXfsYPh59h0yzwUA==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2265,8 +2259,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.27.7':
     optional: true
-
-  '@fontsource-variable/onest@5.2.11': {}
 
   '@img/colour@1.1.0': {}
 

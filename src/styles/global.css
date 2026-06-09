@@ -18,6 +18,11 @@
   --color-accent-soft: #dbeafe;
   --color-highlight: #facc15;
   --color-ring: #14b8a6;
+
+  --font-sans: var(--font-onest);
+
+  --bg-main:
+    linear-gradient(rgb(255 255 255 / 96%)), url("/images/bg-light.webp");
 }
 
 html {
@@ -41,5 +46,7 @@ html {
     --color-accent-soft: rgb(59 130 246 / 0.18);
     --color-highlight: #fde68a;
     --color-ring: #2dd4bf;
+
+    --bg-main: linear-gradient(rgb(0 0 0 / 94%)), url("/images/bg-dark.webp");
   }
 }
