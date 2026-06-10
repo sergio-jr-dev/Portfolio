@@ -1,14 +1,11 @@
 ---
 interface Props {
-  id: string;
+  id?: string;
 }
 
 const { id } = Astro.props;
 ---
 
-<section
-  id={id}
-  class="mx-auto w-full max-w-5xl scroll-mt-28 px-5 py-24 md:py-28"
->
+<div id={id} class="mx-auto w-full max-w-7xl scroll-mt-28 px-4">
   <slot />
-</section>
+</div>

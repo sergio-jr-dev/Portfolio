@@ -1,68 +1,82 @@
 ---
+import { Image } from 'astro:assets';
+
+import Container from '@/components/Container.astro';
 import Badge from '@/components/Badge.astro';
 import IconPill from '@/components/IconPill.astro';
 import GitHubIcon from '@/icons/GitHubIcon.astro';
 import LinkedinIcon from '@/icons/LinkedinIcon.astro';
 import GmailIcon from '@/icons/GmailIcon.astro';
-import { Image } from 'astro:assets';
-import profileImg from '../assets/perfil-linkedin.jpg';
+import profileImg from '@/assets/perfil-linkedin.jpg';
 ---
 
-<Image
-  src={profileImg}
-  alt="Sergio Jiménez Rubio"
-  loading="eager"
-  class="border-surface mb-5 size-24 rounded-full border-4 object-cover object-top shadow-xl shadow-black/10"
-/>
+<section id="start" class="sm:mbs-16 py-10 sm:py-20">
+  <Container>
+    <Image
+      src={profileImg}
+      alt="Sergio Jiménez Rubio"
+      loading="eager"
+      class="border-surface mb-5 size-24 rounded-full border-4 object-cover object-top shadow-xl shadow-black/10"
+    />
 
-<h1
-  class="lex flex-wrap items-center gap-3 text-balance pb-6 text-4xl font-black tracking-tight lg:text-6xl"
->
-  Sergio Jiménez
-  <Badge>Frontend / Full Stack</Badge>
-</h1>
-<h2 class="max-w-3xl text-pretty text-xl leading-8 lg:text-2xl lg:leading-9">
-  Desarrollador web con más de 5 años de experiencia creando aplicaciones,
-  herramientas propias e interfaces centradas en usabilidad. Trabajo desde
-  Albacete combinando frontend, bases full-stack, docencia técnica e IA aplicada
-  al flujo de desarrollo.
-</h2>
+    <h1
+      class="lex flex-wrap items-center gap-3 text-balance pb-6 text-4xl font-black tracking-tight lg:text-6xl"
+    >
+      Sergio Jiménez
+      <Badge>Frontend / Full Stack</Badge>
+    </h1>
+    <h2
+      class="max-w-3xl text-pretty text-xl leading-8 lg:text-2xl lg:leading-9"
+    >
+      Desarrollador web con más de 5 años de experiencia creando aplicaciones,
+      herramientas propias e interfaces centradas en usabilidad. Trabajo desde
+      Albacete combinando frontend, bases full-stack, docencia técnica e IA
+      aplicada al flujo de desarrollo.
+    </h2>
 
-<div class="text-subtle mt-7 flex flex-wrap gap-3 text-sm">
-  <span class="border-border bg-surface-elevated rounded-full border px-4 py-2">
-    Albacete, España
-  </span>
-  <span class="border-border bg-surface-elevated rounded-full border px-4 py-2">
-    Astro · React · TypeScript · CSS
-  </span>
-  <span class="border-border bg-surface-elevated rounded-full border px-4 py-2">
-    IA aplicada al desarrollo
-  </span>
-</div>
+    <div class="text-subtle mt-7 flex flex-wrap gap-3 text-sm">
+      <span
+        class="border-border bg-surface-elevated rounded-full border px-4 py-2"
+      >
+        Albacete, España
+      </span>
+      <span
+        class="border-border bg-surface-elevated rounded-full border px-4 py-2"
+      >
+        Astro · React · TypeScript · CSS
+      </span>
+      <span
+        class="border-border bg-surface-elevated rounded-full border px-4 py-2"
+      >
+        IA aplicada al desarrollo
+      </span>
+    </div>
 
-<nav class="text-muted mt-6 flex flex-wrap gap-3">
-  <IconPill
-    href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
-    brand="Linkedin"
-    label="Abrir perfil de Linkedin de Sergio Jiménez"
-  >
-    <LinkedinIcon class="size-5" aria-hidden="true" />
-    Linkedin
-  </IconPill>
-  <IconPill
-    href="https://github.com/sergio-jr-dev"
-    brand="GitHub"
-    label="Abrir perfil de GitHub de Sergio Jiménez"
-  >
-    <GitHubIcon class="size-5" aria-hidden="true" />
-    GitHub
-  </IconPill>
-  <IconPill
-    href="mailto:sergiojimenezrubio.dev@gmail.com"
-    brand="Gmail"
-    label="Enviar email a Sergio Jiménez"
-  >
-    <GmailIcon class="size-5" aria-hidden="true" />
-    sergiojimenezrubio.dev@gmail.com
-  </IconPill>
-</nav>
+    <nav class="text-muted mt-6 flex flex-wrap gap-3">
+      <IconPill
+        href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
+        brand="Linkedin"
+        label="Abrir perfil de Linkedin de Sergio Jiménez"
+      >
+        <LinkedinIcon class="size-5" aria-hidden="true" />
+        Linkedin
+      </IconPill>
+      <IconPill
+        href="https://github.com/sergio-jr-dev"
+        brand="GitHub"
+        label="Abrir perfil de GitHub de Sergio Jiménez"
+      >
+        <GitHubIcon class="size-5" aria-hidden="true" />
+        GitHub
+      </IconPill>
+      <IconPill
+        href="mailto:sergiojimenezrubio.dev@gmail.com"
+        brand="Gmail"
+        label="Enviar email a Sergio Jiménez"
+      >
+        <GmailIcon class="size-5" aria-hidden="true" />
+        sergiojimenezrubio.dev@gmail.com
+      </IconPill>
+    </nav>
+  </Container>
+</section>

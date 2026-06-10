@@ -1,15 +1,17 @@
 ---
 import ThemeIcon from '@/icons/ThemeIcon.astro';
+
+const { class: className } = Astro.props;
 ---
 
 <button
   id="themeToggle"
-  class="text-muted hover:border-border hover:bg-accent-soft hover:text-foreground focus-visible:outline-ring flex size-9 flex-none items-center justify-center rounded-full border border-transparent bg-transparent transition-[background-color,color,border-color] duration-200 focus-visible:outline-2"
+  class={`${className} text-muted bg-accent-soft hover:text-foreground focus-visible:outline-ring size-9 flex-none items-center justify-center rounded-[calc(infinity*1px-0.125rem)] border border-transparent transition-[background-color,color,border-color] duration-200 focus-visible:outline-2`}
   aria-label="Cambiar entre modo claro y modo oscuro"
   aria-pressed="false"
   type="button"
 >
-  <ThemeIcon class="size-6" aria-hidden="true" />
+  <ThemeIcon class="di size-6" aria-hidden="true" />
 </button>
 
 <script is:inline>
@@ -20,7 +22,11 @@ import ThemeIcon from '@/icons/ThemeIcon.astro';
     ? 'dark'
     : 'light';
 
-  const setTheme = (theme) => {
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );
+
+  const applyTheme = (theme) => {
     const isDark = theme === 'dark';
 
     html.classList.toggle('dark', isDark);
@@ -28,9 +34,33 @@ import ThemeIcon from '@/icons/ThemeIcon.astro';
     themeToggle?.setAttribute('aria-pressed', String(isDark));
   };
 
-  setTheme(storedTheme || systemTheme);
+  const transitionTheme = (theme) => {
+    if (!document.startViewTransition || prefersReducedMotion.matches) {
+      applyTheme(theme);
+      return;
+    }
+
+    const transition = document.startViewTransition(() => applyTheme(theme));
+
+    transition.ready
+      .then(() => {
+        html.animate(
+          {
+            clipPath: ['inset(0 0 100% 0)', 'inset(0)'],
+          },
+          {
+            duration: 600,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            pseudoElement: '::view-transition-new(root)',
+          }
+        );
+      })
+      .catch(() => {});
+  };
+
+  applyTheme(storedTheme || systemTheme);
 
   themeToggle?.addEventListener('click', () => {
-    setTheme(html.classList.contains('dark') ? 'light' : 'dark');
+    transitionTheme(html.classList.contains('dark') ? 'light' : 'dark');
   });
 </script>

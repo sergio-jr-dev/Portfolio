@@ -1,23 +1,46 @@
 ---
+import HomeIcon from '@/icons/HomeIcon.astro';
+import AppWindowIcon from '@/icons/AppWindowIcon.astro';
+import BriefCaseIcon from '@/icons/BriefCaseIcon.astro';
+import UserIcon from '@/icons/UserIcon.astro';
+import Container from './Container.astro';
 import ThemeSelector from './ThemeSelector.astro';
 import HeaderLink from './HeaderLink.astro';
 
 const links = [
-  { href: '#start', title: 'Inicio' },
-  { href: '#about', title: 'Sobre Mí' },
-  { href: '#experience', title: 'Experiencia' },
-  { href: '#projects', title: 'Proyectos' },
+  {
+    href: '#start',
+    icon: HomeIcon,
+    title: 'Inicio',
+  },
+  {
+    href: '#projects',
+    icon: AppWindowIcon,
+    title: 'Proyectos',
+  },
+  {
+    href: '#experience',
+    icon: BriefCaseIcon,
+    title: 'Experiencia',
+  },
+  {
+    href: '#about',
+    icon: UserIcon,
+    title: 'Sobre mí',
+  },
 ];
 ---
 
-<header class="fixed inset-x-0 top-3 z-20 mx-auto max-w-5xl px-3">
-  <nav
-    aria-label="Navegación principal"
-    class="border-border bg-surface-elevated text-muted animate-nav-shadow mx-auto flex w-full max-w-max items-center rounded-full border p-0.5 shadow-sm shadow-black/5 backdrop-blur [animation-range:50px_150px] [animation-timeline:scroll()] motion-reduce:animate-none"
-  >
-    {links.map((link) => <HeaderLink {...link} />)}
-    <ThemeSelector />
-  </nav>
+<header class="sm:inset-bs-3 inset-be-3 fixed inset-x-0 z-20">
+  <Container>
+    <nav
+      aria-label="Navegación principal"
+      class="border-border text-muted sm:animate-nav-shadow bg-surface backdrop-blur-xs shadow-sjr mx-auto flex items-center rounded-full border p-0.5 text-sm sm:max-w-max sm:text-base sm:[animation-range:50px_150px] sm:[animation-timeline:scroll()] sm:motion-reduce:animate-none"
+    >
+      {links.map((link) => <HeaderLink {...link} />)}
+      <ThemeSelector class="ms-0.5 hidden sm:flex" />
+    </nav>
+  </Container>
 </header>
 
 <script is:inline>

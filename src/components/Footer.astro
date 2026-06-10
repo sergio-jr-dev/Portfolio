@@ -1,12 +1,17 @@
 ---
-import SpainFlagIcon from "@/icons/SpainFlagIcon.astro";
+import Container from '@/components/Container.astro';
+import ThemeSelector from '@/components/ThemeSelector.astro';
 ---
 
-<footer class="border-border bg-surface-elevated mt-auto border-t">
-  <p
-    class="text-subtle flex items-center justify-center gap-x-2 px-5 py-4 text-sm"
-  >
-    Sergio Jiménez Rubio - Albacete, España
-    <SpainFlagIcon aria-hidden="true" />
-  </p>
+<footer
+  class="border-border bg-surface-elevated text-subtle mbe-20 sm:mbe-0 mt-auto border-t py-4 text-sm"
+>
+  <Container>
+    <div class="flex items-center justify-center gap-4">
+      <p>Sergio Jiménez Rubio</p>
+      <span>-</span>
+      <p>2026</p>
+      <ThemeSelector class="flex sm:hidden" />
+    </div>
+  </Container>
 </footer>

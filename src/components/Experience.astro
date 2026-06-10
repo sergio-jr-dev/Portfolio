@@ -1,44 +1,49 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
-import socratechLogo from "../assets/logo-socratech.png";
+import Container from '@/components/Container.astro';
+import ExperienceItem from '@/components/ExperienceItem.astro';
+import socratechLogo from '@/assets/logo-socratech.png';
 
 const EXPERIENCE = [
   {
-    date: "Febrero 2023 - Actualidad",
-    title: "Desarrollador web y docente técnico",
-    company: "Socratech",
+    date: 'Febrero 2023 - Actualidad',
+    title: 'Desarrollador web y docente técnico',
+    company: 'Socratech',
     description:
-      "Desarrollo y mantengo aplicaciones web y herramientas internas orientadas al aprendizaje práctico. Diseño interfaces frontend, evoluciono TemariOS como plataforma de contenidos y acompaño técnicamente proyectos de frontend y backend.",
-    link: "https://socratech.es",
+      'Desarrollo y mantengo aplicaciones web y herramientas internas orientadas al aprendizaje práctico. Diseño interfaces frontend, evoluciono TemariOS como plataforma de contenidos y acompaño técnicamente proyectos de frontend y backend.',
+    link: 'https://socratech.es',
     src: socratechLogo,
   },
   {
-    date: "Septiembre 2022 - Febrero 2023",
-    title: "Bootcamp Full-Stack",
-    company: "Socratech",
+    date: 'Septiembre 2022 - Febrero 2023',
+    title: 'Bootcamp Full-Stack',
+    company: 'Socratech',
     description:
-      "Formación intensiva Full Stack con HTML, CSS, Bootstrap, Sass, JavaScript, React, Node.js, Express, MySQL y Git. Proyecto final desarrollado para Beemeral.",
-    link: "https://socratech.es",
+      'Formación intensiva Full Stack con HTML, CSS, Bootstrap, Sass, JavaScript, React, Node.js, Express, MySQL y Git. Proyecto final desarrollado para Beemeral.',
+    link: 'https://socratech.es',
     src: socratechLogo,
   },
 ];
 ---
 
-<h2
-  class="text-foreground mb-10 flex items-center gap-x-2 text-balance text-3xl font-black tracking-tight"
->
-  Experiencia Laboral
-</h2>
-<ol class="border-border relative ms-4 flex flex-col gap-y-12 border-s">
-  {
-    EXPERIENCE.map((experience, i) => (
-      <ExperienceItem {...experience}>
-        {i === 0 && (
-          <span class="border-border bg-primary-soft text-primary-strong me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
-            Actual
-          </span>
-        )}
-      </ExperienceItem>
-    ))
-  }
-</ol>
+<section id="experience" class="py-10 sm:py-20">
+  <Container>
+    <h2
+      class="text-foreground mb-10 flex items-center gap-x-2 text-balance text-3xl font-black tracking-tight"
+    >
+      Experiencia Laboral
+    </h2>
+    <ol class="border-border relative ms-4 flex flex-col gap-y-12 border-s">
+      {
+        EXPERIENCE.map((experience, i) => (
+          <ExperienceItem {...experience}>
+            {i === 0 && (
+              <span class="border-border bg-primary-soft text-primary-strong me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
+                Actual
+              </span>
+            )}
+          </ExperienceItem>
+        ))
+      }
+    </ol>
+  </Container>
+</section>

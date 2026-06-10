@@ -24,6 +24,10 @@
   --bg-main:
     linear-gradient(rgb(255 255 255 / 96%)), url("/images/bg-light.webp");
 
+  --shadow-sjr:
+    rgb(from var(--color-foreground) r g b / 10%) 0 0 5px 0,
+    rgb(from var(--color-foreground) r g b / 10%) 0 0 1px 0;
+
   --animate-nav-shadow: nav-shadow 1s linear both;
 
   @keyframes nav-shadow {
@@ -32,10 +36,9 @@
     }
 
     to {
-      backdrop-filter: blur(15px);
-      box-shadow:
-        rgb(from var(--color-foreground) r g b / 10%) 0 0 5px 0,
-        rgb(from var(--color-foreground) r g b / 10%) 0 0 1px 0;
+      background-color: rgb(from var(--color-surface-elevated) r g b / 85%);
+      backdrop-filter: blur(4px);
+      box-shadow: var(--shadow-sjr);
     }
   }
 }
@@ -64,4 +67,10 @@ html {
 
     --bg-main: linear-gradient(rgb(0 0 0 / 94%)), url("/images/bg-dark.webp");
   }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
