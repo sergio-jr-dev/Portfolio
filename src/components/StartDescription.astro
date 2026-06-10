@@ -1,32 +1,30 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
-import Container from "@/components/Container.astro";
-import Badge from "@/components/Badge.astro";
-import IconPill from "@/components/IconPill.astro";
-import GitHubIcon from "@/assets/icons/GitHubIcon.svg";
-import LinkedinIcon from "@/assets/icons/LinkedinIcon.svg";
-import GmailIcon from "@/assets/icons/GmailIcon.svg";
-import profileImg from "@/assets/images/perfil-linkedin.webp";
+import Container from '@/components/Container.astro';
+import Badge from '@/components/Badge.astro';
+import IconPill from '@/components/IconPill.astro';
+import GitHubIcon from '@/assets/icons/GitHubIcon.svg';
+import LinkedinIcon from '@/assets/icons/LinkedinIcon.svg';
+import GmailIcon from '@/assets/icons/GmailIcon.svg';
+import profileImg from '@/assets/images/perfil-linkedin.webp';
 ---
 
 <section id="start" class="sm:mbs-16 py-10 sm:py-20">
   <Container>
     <div class="flex flex-col items-center gap-6 sm:flex-row sm:gap-0">
-      <div class="sm:w-[65%]">
-        <h1
-          class="flex flex-wrap items-center gap-3 pb-6 text-4xl font-black md:text-6xl"
-        >
+      <div class="space-y-6 sm:w-[65%]">
+        <Badge>Frontend / Full Stack</Badge>
+        <h1 class="typing-title text-4xl font-black md:text-6xl">
           Sergio Jiménez
-          <Badge>Frontend / Full Stack</Badge>
         </h1>
-        <p class="text-pretty text-xl leading-8 lg:text-2xl lg:leading-9">
+        <p class="text-pretty text-xl lg:text-2xl">
           Desarrollador web con más de 5 años de experiencia creando
           aplicaciones, herramientas propias e interfaces centradas en
           usabilidad. Trabajo desde Albacete con foco en frontend, perfil
           full-stack, docencia técnica e IA aplicada al flujo de desarrollo.
         </p>
-        <nav class="text-muted mt-6 flex flex-wrap gap-3">
+        <nav class="text-muted flex flex-wrap gap-3">
           <IconPill
             href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
             brand="Linkedin"
@@ -67,9 +65,47 @@ import profileImg from "@/assets/images/perfil-linkedin.webp";
           src={profileImg}
           alt="Sergio Jiménez Rubio"
           loading="eager"
-          class="mask-[linear-gradient(to_bottom,#000_85%,transparent_100%)] drop-shadow-primary/70 drop-shadow-xs h-auto w-[min(16rem,100%)] object-contain sm:w-full sm:max-w-64 md:max-w-72"
+          class="animate-blurred-fade-in mask-[linear-gradient(to_bottom,#000_85%,transparent_100%)] drop-shadow-primary/70 drop-shadow-xs h-auto w-[min(16rem,100%)] object-contain sm:w-full sm:max-w-64 md:max-w-72"
         />
       </div>
     </div>
   </Container>
 </section>
+
+<style>
+  @supports (interpolate-size: allow-keywords) {
+    .typing-title {
+      interpolate-size: allow-keywords;
+      display: inline-block;
+      overflow-x: clip;
+      white-space: nowrap;
+      border-right: 2px solid currentColor;
+      animation:
+        start-title-typing 1s steps(14) 0.1s both,
+        start-title-blink 0.8s step-end infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .typing-title {
+      animation: none;
+      border-right: 0;
+    }
+  }
+
+  @keyframes start-title-typing {
+    from {
+      width: 0;
+    }
+
+    to {
+      width: max-content;
+    }
+  }
+
+  @keyframes start-title-blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+</style>
