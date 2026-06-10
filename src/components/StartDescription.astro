@@ -12,10 +12,10 @@ import profileImg from '@/assets/perfil-linkedin.webp';
 
 <section id="start" class="sm:mbs-16 py-10 sm:py-20">
   <Container>
-    <div class="flex flex-col gap-6 sm:flex-row sm:gap-0 md:items-center">
+    <div class="flex flex-col items-center gap-6 sm:flex-row sm:gap-0">
       <div class="sm:w-[65%]">
         <h1
-          class="flex flex-wrap items-center gap-3 pb-6 text-4xl font-black lg:text-6xl"
+          class="flex flex-wrap items-center gap-3 pb-6 text-4xl font-black md:text-6xl"
         >
           Sergio Jiménez
           <Badge>Frontend / Full Stack</Badge>
@@ -53,12 +53,12 @@ import profileImg from '@/assets/perfil-linkedin.webp';
           </IconPill>
         </nav>
       </div>
-      <div class="sm:w-[35%]">
+      <div class="flex justify-center sm:w-[35%] sm:justify-end">
         <Image
           src={profileImg}
           alt="Sergio Jiménez Rubio"
           loading="eager"
-          class="mask-[linear-gradient(to_bottom,#000_85%,transparent_100%)] drop-shadow-primary/70 drop-shadow-xs h-110 w-fit justify-self-center object-contain md:justify-self-end"
+          class="mask-[linear-gradient(to_bottom,#000_85%,transparent_100%)] drop-shadow-primary/70 drop-shadow-xs h-auto w-[min(16rem,100%)] object-contain sm:w-full sm:max-w-64 md:max-w-72"
         />
       </div>
     </div>

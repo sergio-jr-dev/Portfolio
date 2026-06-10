@@ -5,7 +5,7 @@ const { class: className } = Astro.props;
 ---
 
 <button
-  id="themeToggle"
+  data-theme-toggle
   class={`${className} text-muted bg-accent-soft hover:text-foreground focus-visible:outline-ring size-9 flex-none items-center justify-center rounded-[calc(infinity*1px-0.125rem)] border border-transparent transition-[background-color,color,border-color] duration-200 focus-visible:outline-2`}
   aria-label="Cambiar entre modo claro y modo oscuro"
   aria-pressed="false"
@@ -14,11 +14,13 @@ const { class: className } = Astro.props;
   <ThemeIcon class="di size-6" aria-hidden="true" />
 </button>
 
-<script is:inline>
+<script>
+  type Theme = "dark" | "light";
+
   const html = document.documentElement;
-  const themeToggle = document.getElementById("themeToggle");
   const storedTheme = localStorage.getItem("theme");
-  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const systemTheme: Theme = window.matchMedia("(prefers-color-scheme: dark)")
+    .matches
     ? "dark"
     : "light";
 
@@ -26,15 +28,25 @@ const { class: className } = Astro.props;
     "(prefers-reduced-motion: reduce)",
   );
 
-  const applyTheme = (theme) => {
+  const isTheme = (theme: string | null): theme is Theme => {
+    return theme === "dark" || theme === "light";
+  };
+
+  const setToggleStates = (isDark: boolean) => {
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(isDark));
+    });
+  };
+
+  const applyTheme = (theme: Theme) => {
     const isDark = theme === "dark";
 
     html.classList.toggle("dark", isDark);
     localStorage.setItem("theme", theme);
-    themeToggle?.setAttribute("aria-pressed", String(isDark));
+    setToggleStates(isDark);
   };
 
-  const transitionTheme = (theme) => {
+  const transitionTheme = (theme: Theme) => {
     if (!document.startViewTransition || prefersReducedMotion.matches) {
       applyTheme(theme);
       return;
@@ -58,9 +70,15 @@ const { class: className } = Astro.props;
       .catch(() => {});
   };
 
-  applyTheme(storedTheme || systemTheme);
+  applyTheme(isTheme(storedTheme) ? storedTheme : systemTheme);
 
-  themeToggle?.addEventListener("click", () => {
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const themeToggle = target.closest("[data-theme-toggle]");
+    if (!themeToggle) return;
+
     transitionTheme(html.classList.contains("dark") ? "light" : "dark");
   });
 </script>
