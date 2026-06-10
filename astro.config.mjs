@@ -2,8 +2,20 @@ import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
+const withProtocol = (url) => {
+  if (!url) return undefined;
+  return url.startsWith("http://") || url.startsWith("https://")
+    ? url
+    : `https://${url}`;
+};
+
+const site = withProtocol(
+  process.env.PUBLIC_SITE_URL ?? process.env.VERCEL_PROJECT_PRODUCTION_URL,
+);
+
 // https://astro.build/config
 export default defineConfig({
+  site,
   vite: {
     plugins: [tailwindcss()],
   },

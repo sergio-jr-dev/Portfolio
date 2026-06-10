@@ -1,9 +1,10 @@
 ---
-import { Font } from 'astro:assets';
-import Footer from '@/components/Footer.astro';
-import Header from '@/components/Header.astro';
+import { Font } from "astro:assets";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import profileImg from "@/assets/images/perfil-linkedin.webp";
 
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -11,6 +12,40 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : undefined;
+const socialImage = Astro.site
+  ? new URL(profileImg.src, Astro.site).toString()
+  : undefined;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sergio Jiménez Rubio",
+  url: canonicalUrl,
+  image: socialImage,
+  jobTitle: "Desarrollador Frontend / Full Stack",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Albacete",
+    addressCountry: "ES",
+  },
+  email: "mailto:sergiojimenezrubio.dev@gmail.com",
+  sameAs: [
+    "https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/",
+    "https://github.com/sergio-jr-dev",
+  ],
+  knowsAbout: [
+    "Frontend",
+    "Full Stack",
+    "Astro",
+    "React",
+    "TypeScript",
+    "Supabase",
+    "IA aplicada al desarrollo",
+  ],
+};
 ---
 
 <!doctype html>
@@ -22,6 +57,27 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="author" content="Sergio Jiménez Rubio" />
+    <meta name="robots" content="index,follow" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    {
+      socialImage && (
+        <meta property="og:image:alt" content="Sergio Jiménez Rubio" />
+      )
+    }
+    <meta
+      name="twitter:card"
+      content={socialImage ? "summary_large_image" : "summary"}
+    />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
     <meta
       name="theme-color"
       content="#f7faf8"
@@ -36,6 +92,11 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
     <Font cssVariable="--font-onest" />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(jsonLd)}
+    />
   </head>
 
   <body

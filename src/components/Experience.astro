@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import Container from '@/components/Container.astro';
-import fundasLogo from '@/assets/images/logo-fundas-y-accesorios.webp';
-import iesLogo from '@/assets/images/logo-ies-leonardo-da-vinci.webp';
-import socratechLogo from '@/assets/images/logo-socratech.webp';
+import Container from "@/components/Container.astro";
+import fundasLogo from "@/assets/images/logo-fundas-y-accesorios.webp";
+import iesLogo from "@/assets/images/logo-ies-leonardo-da-vinci.webp";
+import socratechLogo from "@/assets/images/logo-socratech.webp";
 
 interface ExperienceItem {
   kind: string;
@@ -12,48 +12,46 @@ interface ExperienceItem {
   title: string;
   organization: string;
   description?: string;
-  current?: boolean;
   logo: ImageMetadata;
   logoAlt: string;
 }
 
 const timeline: ExperienceItem[] = [
   {
-    kind: 'Experiencia',
-    date: 'Febrero 2023 - Actualidad',
-    title: 'Desarrollador web y docente técnico',
-    organization: 'Escuela SocraTech',
+    kind: "Experiencia",
+    date: "Febrero 2023 - Junio 2026",
+    title: "Desarrollador web y docente técnico",
+    organization: "Escuela SocraTech",
     description:
-      'Desarrollo y mantenimiento de aplicaciones web y herramientas internas orientadas al aprendizaje práctico. Diseño e implementación de interfaces frontend con foco en usabilidad, estructura y experiencia de usuario. Creación y evolución de TemariOS como plataforma interna para centralizar contenidos, ejercicios, maquetaciones y guías, acompañamiento técnico en más de 20 proyectos de frontend y backend e integración de IA para agilizar análisis, refactorización, documentación y validación técnica.',
-    current: true,
+      "Desarrollé y mantuve aplicaciones web y herramientas internas orientadas al aprendizaje práctico. Diseñé e implementé interfaces frontend con foco en usabilidad, estructura y experiencia de usuario. Creé y evolucioné TemariOS como plataforma interna para centralizar contenidos, ejercicios, maquetaciones y guías, acompañé técnicamente más de 20 proyectos de frontend y backend e integré IA para agilizar análisis, refactorización, documentación y validación técnica.",
     logo: socratechLogo,
-    logoAlt: 'Logo de Escuela SocraTech',
+    logoAlt: "Logo de Escuela SocraTech",
   },
   {
-    kind: 'Experiencia',
-    date: 'Agosto 2019 - Septiembre 2022',
-    title: 'Autónomo',
-    organization: 'Ecommerce propio',
+    kind: "Experiencia",
+    date: "Agosto 2019 - Septiembre 2022",
+    title: "Autónomo",
+    organization: "Ecommerce propio",
     description:
-      'Diseño y desarrollo desde cero de la web del ecommerce, definiendo estructura, interfaz y experiencia de usuario. Implementación de mejoras funcionales y evolución continua del canal digital según las necesidades del negocio. Gestión del entorno online del proyecto, combinando desarrollo web, actualización de contenidos y operativa digital, con responsabilidad directa sobre ejecución, priorización y toma de decisiones.',
+      "Diseño y desarrollo desde cero de la web del ecommerce, definiendo estructura, interfaz y experiencia de usuario. Implementación de mejoras funcionales y evolución continua del canal digital según las necesidades del negocio. Gestión del entorno online del proyecto, combinando desarrollo web, actualización de contenidos y operativa digital, con responsabilidad directa sobre ejecución, priorización y toma de decisiones.",
     logo: fundasLogo,
-    logoAlt: 'Logo de Fundas y Accesorios',
+    logoAlt: "Logo de Fundas y Accesorios",
   },
   {
-    kind: 'Estudios',
-    date: 'Septiembre 2022 - Febrero 2023',
-    title: 'Bootcamp Full Stack Web Developer',
-    organization: 'Escuela SocraTech',
+    kind: "Estudios",
+    date: "Septiembre 2022 - Febrero 2023",
+    title: "Bootcamp Full Stack Web Developer",
+    organization: "Escuela SocraTech",
     logo: socratechLogo,
-    logoAlt: 'Logo de Escuela SocraTech',
+    logoAlt: "Logo de Escuela SocraTech",
   },
   {
-    kind: 'Estudios',
-    date: '2010 - 2012',
-    title: 'FP Sistemas Microinformáticos y Redes',
-    organization: 'IES Leonardo Da Vinci, Albacete',
+    kind: "Estudios",
+    date: "2010 - 2012",
+    title: "FP Sistemas Microinformáticos y Redes",
+    organization: "IES Leonardo Da Vinci, Albacete",
     logo: iesLogo,
-    logoAlt: 'Logo del IES Leonardo Da Vinci',
+    logoAlt: "Logo del IES Leonardo Da Vinci",
   },
 ];
 ---
@@ -77,11 +75,6 @@ const timeline: ExperienceItem[] = [
             </span>
             <h3 class="text-primary-strong mb-1 flex flex-wrap items-center gap-y-2 text-xl font-extrabold">
               {item.title}
-              {item.current && (
-                <span class="border-border bg-primary-soft text-primary-strong me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
-                  Actual
-                </span>
-              )}
               <span class="border-border bg-surface-elevated text-subtle me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
                 {item.kind}
               </span>
