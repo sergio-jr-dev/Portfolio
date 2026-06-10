@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -14,13 +14,13 @@ const { title, company, description, date, src } = Astro.props;
 
 <li class="ms-8">
   <span
-    class="border-border bg-surface ring-background absolute -start-4 flex size-8 items-center justify-center rounded-full border ring-4"
+    class="border-border bg-surface ring-background -inset-s-4 absolute flex size-8 items-center justify-center rounded-full border ring-4"
   >
     <Image
       class="rounded-full"
       src={src}
       alt={`Logo de ${company}`}
-      loading="eager"
+      loading="lazy"
     />
   </span>
   <h3

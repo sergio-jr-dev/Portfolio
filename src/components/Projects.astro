@@ -36,10 +36,10 @@ const projects = [
     >
       Proyectos
     </h2>
-    <div class="grid gap-4 md:grid-cols-3">
+    <div class="grid gap-4 md:grid-cols-2">
       {
         projects.map(({ title, description, link, tags }) => (
-          <article class="border-border bg-surface-elevated flex min-w-0 flex-col gap-y-4 rounded-lg border p-5 shadow-sm shadow-black/5">
+          <article class="border-border bg-surface-elevated flex min-w-0 flex-col gap-y-4 rounded-lg border p-5 shadow-sm shadow-black/5 first:col-span-2">
             <h3 class="text-primary-strong wrap-break-words text-xl font-extrabold">
               {title}
             </h3>
