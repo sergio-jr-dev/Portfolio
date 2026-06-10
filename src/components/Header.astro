@@ -1,37 +1,37 @@
 ---
-import HomeIcon from "@/assets/icons/HomeIcon.svg";
-import AppWindowIcon from "@/assets/icons/AppWindowIcon.svg";
-import BriefCaseIcon from "@/assets/icons/BriefCaseIcon.svg";
-import UserIcon from "@/assets/icons/UserIcon.svg";
-import Container from "./Container.astro";
-import ThemeSelector from "./ThemeSelector.astro";
-import HeaderLink from "./HeaderLink.astro";
+import HomeIcon from '@/assets/icons/HomeIcon.svg';
+import AppWindowIcon from '@/assets/icons/AppWindowIcon.svg';
+import BriefCaseIcon from '@/assets/icons/BriefCaseIcon.svg';
+import UserIcon from '@/assets/icons/UserIcon.svg';
+import Container from './Container.astro';
+import ThemeSelector from './ThemeSelector.astro';
+import HeaderLink from './HeaderLink.astro';
 
 const links = [
   {
-    href: "#start",
+    href: '#start',
     icon: HomeIcon,
-    title: "Inicio",
+    title: 'Inicio',
   },
   {
-    href: "#projects",
+    href: '#projects',
     icon: AppWindowIcon,
-    title: "Proyectos",
+    title: 'Proyectos',
   },
   {
-    href: "#experience",
+    href: '#experience',
     icon: BriefCaseIcon,
-    title: "Experiencia",
+    title: 'Experiencia',
   },
   {
-    href: "#about",
+    href: '#about',
     icon: UserIcon,
-    title: "Sobre mí",
+    title: 'Sobre mí',
   },
 ];
 ---
 
-<header class="sm:inset-bs-3 inset-be-3 fixed inset-x-0 z-20">
+<header class="sm:inset-bs-3 inset-be-3 fixed inset-x-0 z-10 sm:sticky">
   <Container>
     <nav
       aria-label="Navegación principal"
@@ -44,8 +44,8 @@ const links = [
 </header>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll("main section[id]");
+  document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('header nav a[href^="#"]');
 
     if (!sections.length || !navLinks.length) return;
@@ -54,12 +54,12 @@ const links = [
       if (!id) return;
 
       navLinks.forEach((link) => {
-        link.classList.remove("active");
-        link.removeAttribute("aria-current");
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
 
-        if (link.getAttribute("href") === `#${id}`) {
-          link.classList.add("active");
-          link.setAttribute("aria-current", "page");
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
         }
       });
     };
@@ -70,7 +70,7 @@ const links = [
           if (entry.isIntersecting) setActiveLink(entry.target.id);
         });
       },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0 },
+      { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));

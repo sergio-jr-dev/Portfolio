@@ -36,7 +36,7 @@
     }
 
     to {
-      background-color: rgb(from var(--color-surface-elevated) r g b / 85%);
+      background-color: rgb(from var(--color-surface-elevated) r g b / 75%);
       backdrop-filter: blur(4px);
       box-shadow: var(--shadow-sjr);
     }
