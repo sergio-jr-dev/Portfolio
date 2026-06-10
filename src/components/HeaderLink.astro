@@ -1,4 +1,12 @@
 ---
+import type { SvgComponent } from "astro/types";
+
+interface Props {
+  href: string;
+  icon: SvgComponent;
+  title: string;
+}
+
 const { href, icon: Icon, title } = Astro.props;
 ---
 
@@ -6,7 +14,7 @@ const { href, icon: Icon, title } = Astro.props;
   href={href}
   class="hover:text-foreground focus-visible:outline-ring flex grow flex-col items-center rounded-[calc(infinity*1px-0.125rem)] p-1 transition duration-150 [text-box:trim-both_cap_alphabetic] focus-visible:outline-2 sm:p-2"
 >
-  <Icon class="h-5 w-5 sm:hidden" />
+  <Icon class="h-5 w-5 sm:hidden" aria-hidden="true" />
   {title}
 </a>
 

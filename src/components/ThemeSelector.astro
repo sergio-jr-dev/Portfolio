@@ -1,5 +1,5 @@
 ---
-import ThemeIcon from '@/icons/ThemeIcon.astro';
+import ThemeIcon from "@/assets/icons/ThemeIcon.svg";
 
 const { class: className } = Astro.props;
 ---
@@ -16,22 +16,22 @@ const { class: className } = Astro.props;
 
 <script is:inline>
   const html = document.documentElement;
-  const themeToggle = document.getElementById('themeToggle');
-  const storedTheme = localStorage.getItem('theme');
-  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
+  const themeToggle = document.getElementById("themeToggle");
+  const storedTheme = localStorage.getItem("theme");
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 
   const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
+    "(prefers-reduced-motion: reduce)",
   );
 
   const applyTheme = (theme) => {
-    const isDark = theme === 'dark';
+    const isDark = theme === "dark";
 
-    html.classList.toggle('dark', isDark);
-    localStorage.setItem('theme', theme);
-    themeToggle?.setAttribute('aria-pressed', String(isDark));
+    html.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", theme);
+    themeToggle?.setAttribute("aria-pressed", String(isDark));
   };
 
   const transitionTheme = (theme) => {
@@ -46,13 +46,13 @@ const { class: className } = Astro.props;
       .then(() => {
         html.animate(
           {
-            clipPath: ['inset(0 0 100% 0)', 'inset(0)'],
+            clipPath: ["inset(0 0 100% 0)", "inset(0)"],
           },
           {
             duration: 600,
-            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-            pseudoElement: '::view-transition-new(root)',
-          }
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            pseudoElement: "::view-transition-new(root)",
+          },
         );
       })
       .catch(() => {});
@@ -60,7 +60,7 @@ const { class: className } = Astro.props;
 
   applyTheme(storedTheme || systemTheme);
 
-  themeToggle?.addEventListener('click', () => {
-    transitionTheme(html.classList.contains('dark') ? 'light' : 'dark');
+  themeToggle?.addEventListener("click", () => {
+    transitionTheme(html.classList.contains("dark") ? "light" : "dark");
   });
 </script>
