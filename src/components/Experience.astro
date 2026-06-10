@@ -1,47 +1,103 @@
 ---
-import Container from '@/components/Container.astro';
-import ExperienceItem from '@/components/ExperienceItem.astro';
-import socratechLogo from '@/assets/logo-socratech.webp';
+import { Image } from 'astro:assets';
 
-const EXPERIENCE = [
+import Container from '@/components/Container.astro';
+import fundasLogo from '@/assets/images/logo-fundas-y-accesorios.webp';
+import iesLogo from '@/assets/images/logo-ies-leonardo-da-vinci.webp';
+import socratechLogo from '@/assets/images/logo-socratech.webp';
+
+interface ExperienceItem {
+  kind: string;
+  date: string;
+  title: string;
+  organization: string;
+  description?: string;
+  current?: boolean;
+  logo: ImageMetadata;
+  logoAlt: string;
+}
+
+const timeline: ExperienceItem[] = [
   {
+    kind: 'Experiencia',
     date: 'Febrero 2023 - Actualidad',
     title: 'Desarrollador web y docente técnico',
-    company: 'Socratech',
+    organization: 'Escuela SocraTech',
     description:
-      'Desarrollo y mantengo aplicaciones web y herramientas internas orientadas al aprendizaje práctico. Diseño interfaces frontend, evoluciono TemariOS como plataforma de contenidos y acompaño técnicamente proyectos de frontend y backend.',
-    link: 'https://socratech.es',
-    src: socratechLogo,
+      'Desarrollo y mantenimiento de aplicaciones web y herramientas internas orientadas al aprendizaje práctico. Diseño e implementación de interfaces frontend con foco en usabilidad, estructura y experiencia de usuario. Creación y evolución de TemariOS como plataforma interna para centralizar contenidos, ejercicios, maquetaciones y guías, acompañamiento técnico en más de 20 proyectos de frontend y backend e integración de IA para agilizar análisis, refactorización, documentación y validación técnica.',
+    current: true,
+    logo: socratechLogo,
+    logoAlt: 'Logo de Escuela SocraTech',
   },
   {
-    date: 'Septiembre 2022 - Febrero 2023',
-    title: 'Bootcamp Full-Stack',
-    company: 'Socratech',
+    kind: 'Experiencia',
+    date: 'Agosto 2019 - Septiembre 2022',
+    title: 'Autónomo',
+    organization: 'Ecommerce propio',
     description:
-      'Formación intensiva Full Stack con HTML, CSS, Bootstrap, Sass, JavaScript, React, Node.js, Express, MySQL y Git. Proyecto final desarrollado para Beemeral.',
-    link: 'https://socratech.es',
-    src: socratechLogo,
+      'Diseño y desarrollo desde cero de la web del ecommerce, definiendo estructura, interfaz y experiencia de usuario. Implementación de mejoras funcionales y evolución continua del canal digital según las necesidades del negocio. Gestión del entorno online del proyecto, combinando desarrollo web, actualización de contenidos y operativa digital, con responsabilidad directa sobre ejecución, priorización y toma de decisiones.',
+    logo: fundasLogo,
+    logoAlt: 'Logo de Fundas y Accesorios',
+  },
+  {
+    kind: 'Estudios',
+    date: 'Septiembre 2022 - Febrero 2023',
+    title: 'Bootcamp Full Stack Web Developer',
+    organization: 'Escuela SocraTech',
+    logo: socratechLogo,
+    logoAlt: 'Logo de Escuela SocraTech',
+  },
+  {
+    kind: 'Estudios',
+    date: '2010 - 2012',
+    title: 'FP Sistemas Microinformáticos y Redes',
+    organization: 'IES Leonardo Da Vinci, Albacete',
+    logo: iesLogo,
+    logoAlt: 'Logo del IES Leonardo Da Vinci',
   },
 ];
 ---
 
 <section id="experience" class="py-10 sm:py-20">
   <Container>
-    <h2
-      class="text-foreground mb-10 flex items-center gap-x-2 text-balance text-3xl font-black"
-    >
-      Experiencia Laboral
+    <h2 class="text-foreground mb-10 text-3xl font-black">
+      Experiencia y estudios
     </h2>
     <ol class="border-border relative ms-4 flex flex-col gap-y-12 border-s">
       {
-        EXPERIENCE.map((experience, i) => (
-          <ExperienceItem {...experience}>
-            {i === 0 && (
-              <span class="border-border bg-primary-soft text-primary-strong me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
-                Actual
+        timeline.map((item) => (
+          <li class="ms-8">
+            <span class="-inset-s-5 border-border absolute size-10 rounded-full">
+              <Image
+                class="size-full rounded-full object-cover"
+                src={item.logo}
+                alt={item.logoAlt}
+                loading="lazy"
+              />
+            </span>
+            <h3 class="text-primary-strong mb-1 flex flex-wrap items-center gap-y-2 text-xl font-extrabold">
+              {item.title}
+              {item.current && (
+                <span class="border-border bg-primary-soft text-primary-strong me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
+                  Actual
+                </span>
+              )}
+              <span class="border-border bg-surface-elevated text-subtle me-2 ms-3 rounded-full border px-2.5 py-0.5 text-xs font-bold">
+                {item.kind}
               </span>
+            </h3>
+            <h4 class="text-foreground text-lg font-semibold">
+              {item.organization}
+            </h4>
+            <time class="text-subtle mb-3 block text-sm font-medium leading-none">
+              {item.date}
+            </time>
+            {item.description && (
+              <p class="text-muted max-w-3xl text-pretty text-base leading-7">
+                {item.description}
+              </p>
             )}
-          </ExperienceItem>
+          </li>
         ))
       }
     </ol>
