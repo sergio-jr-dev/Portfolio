@@ -1,8 +1,6 @@
 ---
 import Container from '@/components/Container.astro';
-import IconPill from '@/components/IconPill.astro';
 import TechnologyPill from '@/components/TechnologyPill.astro';
-import ExternalLinkIcon from '@/assets/icons/ExternalLinkIcon.svg';
 
 const projects = [
   {
@@ -10,21 +8,29 @@ const projects = [
     description:
       'Plataforma en desarrollo con playgrounds y generadores de CSS y HTML, orientada a acelerar pruebas visuales, creación de código y productividad frontend.',
     link: 'https://baselinelab.dev',
-    tags: ['Astro', 'TypeScript', 'CSS'],
+    tags: ['Astro', 'TypeScript', 'Web Components', 'CSS', 'HTML'],
+    image: './src/assets/images/projects/baselinelab.webp',
   },
   {
     title: 'TemariOS',
     description:
       'Aplicación para alumnos de bootcamp donde centralizo guías, recursos, ejercicios, maquetaciones y quizzes para mejorar el seguimiento práctico del aprendizaje.',
+    credentials: {
+      title: 'Credenciales para probar la aplicación:',
+      user: 'Demo',
+      password: 'pwXd+b0VbUXgllYL',
+    },
     link: 'https://temari-os.vercel.app',
     tags: ['React 19', 'TypeScript', 'Supabase'],
+    image: './src/assets/images/projects/temarios.webp',
   },
   {
-    title: 'FlipyFriends',
+    title: 'FlipiFriends',
     description:
       'Proyecto infantil para seleccionar series animadas y jugar a buscar parejas de cartas, centrado en lógica de interacción, estado y experiencia de usuario.',
     link: 'https://flipifriends.netlify.app',
     tags: ['React 19', 'JavaScript', 'CSS'],
+    image: './src/assets/images/projects/flipi-friends.webp',
   },
 ];
 ---
@@ -38,29 +44,42 @@ const projects = [
     </h2>
     <div class="grid gap-4 md:grid-cols-2">
       {
-        projects.map(({ title, description, link, tags }) => (
-          <article class="border-border bg-surface-elevated flex min-w-0 flex-col gap-y-4 rounded-lg border p-5 shadow-sm shadow-black/5 first:col-span-2">
-            <h3 class="text-primary-strong wrap-break-words text-xl font-extrabold">
-              {title}
-            </h3>
-            <p class="text-muted text-pretty text-sm leading-6">
-              {description}
-            </p>
-            <ul class="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <li>
-                  <TechnologyPill>{tag}</TechnologyPill>
-                </li>
-              ))}
-            </ul>
-            <div class="mt-auto pt-2">
-              <IconPill href={link} label={`Abrir proyecto ${title}`}>
-                <ExternalLinkIcon class="size-5" aria-hidden="true" />
-                Ver proyecto
-              </IconPill>
-            </div>
-          </article>
-        ))
+        projects.map(
+          ({ title, description, credentials, link, tags, image }) => (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border-border bg-surface-elevated shadow-sjr flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border shadow [corner-shape:squircle] first:col-span-2"
+            >
+              <article>
+                <img src={image} alt={title} class="h-auto w-full" />
+                <div class="space-y-2 p-5">
+                  <h3 class="text-primary-strong text-2xl font-extrabold">
+                    {title}
+                  </h3>
+                  <p class="text-muted text-pretty">{description}</p>
+                  {credentials && (
+                    <>
+                      <p>{credentials.title}</p>
+                      <ul class="list-disc ps-8">
+                        <li>{credentials.user}</li>
+                        <li>{credentials.password}</li>
+                      </ul>
+                    </>
+                  )}
+                  <ul class="flex flex-wrap gap-2">
+                    {tags.map((tag) => (
+                      <li>
+                        <TechnologyPill>{tag}</TechnologyPill>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </a>
+          )
+        )
       }
     </div>
   </Container>
