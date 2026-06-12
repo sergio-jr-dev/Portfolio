@@ -1,6 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Container from '@/components/Container.astro';
 import TechnologyPill from '@/components/TechnologyPill.astro';
+import baselinelabImage from '@/assets/images/projects/baselinelab.webp';
+import temariosImage from '@/assets/images/projects/temarios.webp';
+import flipifriendsImage from '@/assets/images/projects/flipi-friends.webp';
 
 const projects = [
   {
@@ -9,7 +13,7 @@ const projects = [
       'Plataforma en desarrollo con playgrounds y generadores de CSS y HTML, orientada a acelerar pruebas visuales, creación de código y productividad frontend.',
     link: 'https://baselinelab.dev',
     tags: ['Astro', 'TypeScript', 'Web Components', 'CSS', 'HTML'],
-    image: './src/assets/images/projects/baselinelab.webp',
+    image: baselinelabImage,
   },
   {
     title: 'TemariOS',
@@ -22,7 +26,7 @@ const projects = [
     },
     link: 'https://temariosapp.vercel.app/',
     tags: ['React 19', 'TypeScript', 'Supabase', 'CSS'],
-    image: './src/assets/images/projects/temarios.webp',
+    image: temariosImage,
   },
   {
     title: 'FlipiFriends',
@@ -30,7 +34,7 @@ const projects = [
       'Proyecto infantil para seleccionar series animadas y jugar a buscar parejas de cartas, centrado en lógica de interacción, estado y experiencia de usuario.',
     link: 'https://flipifriends.netlify.app',
     tags: ['React 19', 'JavaScript', 'CSS'],
-    image: './src/assets/images/projects/flipi-friends.webp',
+    image: flipifriendsImage,
   },
 ];
 ---
@@ -45,7 +49,7 @@ const projects = [
     <div class="grid gap-4 md:grid-cols-2">
       {
         projects.map(
-          ({ title, description, credentials, link, tags, image }) => (
+          ({ title, description, credentials, link, tags, image }, index) => (
             <a
               href={link}
               target="_blank"
@@ -53,7 +57,16 @@ const projects = [
               class="border-border bg-surface-elevated shadow-sjr flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border shadow [corner-shape:squircle] first:col-span-2"
             >
               <article>
-                <img src={image} alt={title} class="h-auto w-full" />
+                <Image
+                  src={image}
+                  alt={title}
+                  class="h-auto w-full"
+                  width={1920}
+                  height={1080}
+                  fetchpriority={index === 0 ? 'high' : 'low'}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
                 <div class="space-y-2 p-5">
                   <h3 class="text-primary-strong text-2xl font-extrabold">
                     {title}
