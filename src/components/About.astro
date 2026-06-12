@@ -1,21 +1,21 @@
 ---
-import Container from "@/components/Container.astro";
+import Container from '@/components/Container.astro';
 
 const HIGHLIGHTS = [
   {
-    title: "Producto y aprendizaje",
+    title: 'Producto y aprendizaje',
     description:
-      "He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.",
+      'He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.',
   },
   {
-    title: "Frontend con criterio",
+    title: 'Frontend con criterio',
     description:
-      "Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.",
+      'Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.',
   },
   {
-    title: "IA aplicada",
+    title: 'IA aplicada',
     description:
-      "Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.",
+      'Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.',
   },
 ];
 ---
@@ -58,9 +58,7 @@ const HIGHLIGHTS = [
         HIGHLIGHTS.map(({ title, description }) => (
           <article class="border-border bg-surface-elevated rounded-lg border p-5 shadow-sm shadow-black/5">
             <h3 class="text-foreground mb-3 text-lg font-extrabold">{title}</h3>
-            <p class="text-muted text-pretty text-sm leading-6">
-              {description}
-            </p>
+            <p class="text-pretty leading-6">{description}</p>
           </article>
         ))
       }
