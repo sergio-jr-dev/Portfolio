@@ -1,16 +1,54 @@
 ---
-import Container from "@/components/Container.astro";
-import ThemeSelector from "@/components/ThemeSelector.astro";
+import Container from '@/components/Container.astro';
+import ThemeSelector from '@/components/ThemeSelector.astro';
+import GitHubIcon from '@/assets/icons/GitHubIcon.svg';
+import LinkedinIcon from '@/assets/icons/LinkedinIcon.svg';
+import GmailIcon from '@/assets/icons/GmailIcon.svg';
+
+const socialLinks = [
+  {
+    href: 'https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/',
+    label: 'Abrir perfil de Linkedin de Sergio Jiménez',
+    icon: LinkedinIcon,
+  },
+  {
+    href: 'mailto:sergiojimenezrubio.dev@gmail.com',
+    label: 'Enviar email a Sergio Jiménez',
+    icon: GmailIcon,
+  },
+  {
+    href: 'https://github.com/sergio-jr-dev',
+    label: 'Abrir perfil de GitHub de Sergio Jiménez',
+    icon: GitHubIcon,
+  },
+];
 ---
 
 <footer
   class="border-border bg-surface-elevated text-subtle mbe-20 sm:mbe-0 mt-auto border-y py-4 text-sm sm:border-t"
 >
   <Container>
-    <div class="flex items-center justify-center gap-4">
-      <p>Sergio Jiménez Rubio</p>
-      <span>-</span>
-      <p>2026</p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <div class="flex items-center gap-4">
+        <p>Sergio Jiménez Rubio</p>
+      </div>
+      <nav class="flex items-center gap-2" aria-label="Redes sociales">
+        {
+          socialLinks.map(({ href, label, icon: Icon }) => (
+            <a
+              href={href}
+              target={href.startsWith('mailto:') ? undefined : '_blank'}
+              rel={
+                href.startsWith('mailto:') ? undefined : 'noopener noreferrer'
+              }
+              aria-label={label}
+              class="hover:text-foreground focus-visible:ring-ring focus-visible:ring-offset-background inline-flex size-9 items-center justify-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+            >
+              <Icon class="size-5" aria-hidden="true" />
+            </a>
+          ))
+        }
+      </nav>
       <ThemeSelector class="flex sm:hidden" />
     </div>
   </Container>

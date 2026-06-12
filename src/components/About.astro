@@ -1,21 +1,35 @@
 ---
-import Container from '@/components/Container.astro';
+import { Image } from "astro:assets";
+
+import Container from "@/components/Container.astro";
+import aiAppliedImage from "@/assets/images/about/ia-aplicada.webp";
+import frontendJudgementImage from "@/assets/images/about/frontend-criterio.webp";
+import productLearningImage from "@/assets/images/about/producto-aprendizaje.webp";
 
 const HIGHLIGHTS = [
   {
-    title: 'Producto y aprendizaje',
+    title: "Producto y aprendizaje",
     description:
-      'He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.',
+      "He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.",
+    image: productLearningImage,
+    imageAlt:
+      "Icono 3D de aprendizaje práctico con cuaderno, ventana de aplicación y bloques de producto",
   },
   {
-    title: 'Frontend con criterio',
+    title: "Frontend con criterio",
     description:
-      'Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.',
+      "Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.",
+    image: frontendJudgementImage,
+    imageAlt:
+      "Icono 3D de frontend con ventana web, capas de interfaz, cursor y símbolo de accesibilidad",
   },
   {
-    title: 'IA aplicada',
+    title: "IA aplicada",
     description:
-      'Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.',
+      "Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.",
+    image: aiAppliedImage,
+    imageAlt:
+      "Icono 3D de IA aplicada con red neuronal, código, documentación y validación técnica",
   },
 ];
 ---
@@ -41,7 +55,7 @@ const HIGHLIGHTS = [
         <p>
           Soy desarrollador Frontend / Full Stack con experiencia en
           aplicaciones web, herramientas propias y acompañamiento técnico. En
-          SocraTech desarrollé aplicaciones, impartí docencia y revisé
+          SocraTech he desarrollado aplicaciones, impartido docencia y revisado
           proyectos, ayudando a que soluciones de frontend y backend pasaran de
           ejercicio a producto funcional.
         </p>
@@ -53,10 +67,21 @@ const HIGHLIGHTS = [
       </div>
     </div>
 
-    <div class="mt-10 grid gap-4 md:grid-cols-3">
+    <div class="mt-24 grid gap-x-4 gap-y-20 md:grid-cols-3">
       {
-        HIGHLIGHTS.map(({ title, description }) => (
-          <article class="border-border bg-surface-elevated rounded-lg border p-5 shadow-sm shadow-black/5">
+        HIGHLIGHTS.map(({ title, description, image, imageAlt }) => (
+          <article class="border-border bg-surface-elevated relative rounded-3xl border p-5 pt-16 shadow-sm shadow-black/5 [corner-shape:squircle] sm:pt-20">
+            <div class="bg-background-soft border-border absolute left-1/2 top-0 size-24 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-md border shadow-sm shadow-black/10 sm:size-28">
+              <Image
+                src={image}
+                alt={imageAlt}
+                width={640}
+                height={640}
+                class="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <h3 class="text-foreground mb-3 text-lg font-extrabold">{title}</h3>
             <p class="text-pretty leading-6">{description}</p>
           </article>

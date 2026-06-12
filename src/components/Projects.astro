@@ -46,7 +46,7 @@ const projects = [
     >
       Proyectos
     </h2>
-    <div class="grid gap-4 md:grid-cols-2">
+    <div class="grid grid-cols-2 gap-4">
       {
         projects.map(
           ({ title, description, credentials, link, tags, image }, index) => (
@@ -54,7 +54,7 @@ const projects = [
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              class="project border-border bg-surface-elevated shadow-sjr flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border transition-[border] duration-100 [corner-shape:squircle] first:col-span-2 hover:border-4"
+              class="project border-border bg-surface-elevated shadow-sjr col-span-2 flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border transition-[border] duration-100 [corner-shape:squircle] hover:border-4 md:col-span-1 md:first:col-span-2"
             >
               <article>
                 <Image
