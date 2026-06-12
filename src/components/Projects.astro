@@ -54,7 +54,7 @@ const projects = [
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              class="border-border bg-surface-elevated shadow-sjr flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border shadow [corner-shape:squircle] first:col-span-2"
+              class="project border-border bg-surface-elevated shadow-sjr flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border transition-[border] duration-100 [corner-shape:squircle] first:col-span-2 hover:border-4"
             >
               <article>
                 <Image
@@ -97,3 +97,10 @@ const projects = [
     </div>
   </Container>
 </section>
+
+<style>
+  .project:hover ~ .project,
+  [id='projects']:has(.project:hover) .project:not(:hover) {
+    filter: blur(4px) brightness(0.8);
+  }
+</style>
