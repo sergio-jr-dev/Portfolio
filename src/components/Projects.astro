@@ -19,11 +19,6 @@ const projects = [
     title: 'TemariOS',
     description:
       'Aplicación para los alumnos del bootcamp de SocraTech donde centralizo guías, recursos, ejercicios, maquetaciones y quizzes para mejorar el seguimiento práctico del aprendizaje.',
-    credentials: {
-      title: 'Credenciales para probar la aplicación:',
-      user: 'Demo',
-      password: '4$1W8mhUgTw2CPQp',
-    },
     link: 'https://temariosapp.vercel.app/',
     tags: ['React 19', 'TypeScript', 'Supabase', 'CSS'],
     image: temariosImage,
@@ -48,78 +43,65 @@ const projects = [
     </h2>
     <div class="grid grid-cols-2 gap-4">
       {
-        projects.map(
-          ({ title, description, credentials, link, tags, image }, index) => (
-            <article
-              class="project border-border bg-surface-elevated shadow-sjr col-span-2 flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border transition-[border] duration-100 [corner-shape:squircle] hover:border-4 md:col-span-1 md:first:col-span-2"
+        projects.map(({ title, description, link, tags, image }, index) => (
+          <article class="project border-border bg-surface-elevated shadow-sjr col-span-2 flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border transition-[border] duration-100 [corner-shape:squircle] hover:border-4 md:col-span-1 md:first:col-span-2">
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ver proyecto ${title}`}
             >
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Ver proyecto ${title}`}
-              >
-                <Image
-                  src={image}
-                  alt={title}
-                  class="h-auto w-full"
-                  width={1920}
-                  height={1080}
-                  fetchpriority={index === 0 ? 'high' : 'low'}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  decoding="async"
-                />
-              </a>
-              <div class="space-y-2 p-5">
-                <h3 class="text-primary-strong text-2xl font-extrabold">
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="project-title-link inline-flex items-center gap-x-2"
+              <Image
+                src={image}
+                alt={title}
+                class="h-auto w-full"
+                width={1920}
+                height={1080}
+                fetchpriority={index === 0 ? 'high' : 'low'}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </a>
+            <div class="space-y-2 p-5">
+              <h3 class="text-primary-strong text-2xl font-extrabold">
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-title-link inline-flex items-center gap-x-2"
+                >
+                  {title}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="project-title-icon size-5 opacity-0 transition-opacity duration-150"
+                    aria-hidden="true"
                   >
-                    {title}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="project-title-icon size-5 opacity-0 transition-opacity duration-150"
-                      aria-hidden="true"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
-                      <path d="M11 13l9 -9" />
-                      <path d="M15 4h5v5" />
-                    </svg>
-                  </a>
-                </h3>
-                <p class="text-pretty">{description}</p>
-                {credentials && (
-                  <>
-                    <p>{credentials.title}</p>
-                    <ul class="list-disc ps-8">
-                      <li>{credentials.user}</li>
-                      <li>{credentials.password}</li>
-                    </ul>
-                  </>
-                )}
-                <ul class="flex flex-wrap gap-2">
-                  {tags.map((tag) => (
-                    <li>
-                      <TechnologyPill>{tag}</TechnologyPill>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          )
-        )
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                    <path d="M11 13l9 -9" />
+                    <path d="M15 4h5v5" />
+                  </svg>
+                </a>
+              </h3>
+              <p class="text-pretty">{description}</p>
+              <ul class="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <li>
+                    <TechnologyPill>{tag}</TechnologyPill>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
       }
     </div>
   </Container>
