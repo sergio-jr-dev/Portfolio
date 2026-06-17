@@ -1,54 +1,76 @@
-# Astro Starter Kit: Basics
+# Portfolio de Sergio Jiménez Rubio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Repositorio del portfolio personal de Sergio Jiménez Rubio, desarrollado con Astro y Tailwind CSS. El objetivo del proyecto es mostrar mi perfil como desarrollador Frontend / Full Stack, documentar proyectos destacados y dejar visible cómo está construido el sitio para que pueda revisarse en público.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Redes
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<p>
+  <a href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/LinkedIn-Sergio%20Jim%C3%A9nez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn de Sergio Jiménez" />
+  </a>
+  <a href="https://x.com/sergiojr_dev" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/X-@sergiojr__dev-000000?style=for-the-badge&logo=x&logoColor=white" alt="Perfil de X de Sergio Jiménez" />
+  </a>
+</p>
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Capturas
 
-## 🚀 Project Structure
+### Inicio en desktop
 
-Inside of your Astro project, you'll see the following folders and files:
+![Inicio del portfolio en modo claro](./public/images/readme/home-desktop-light.png)
+
+### Proyectos en modo oscuro
+
+![Sección de proyectos del portfolio en modo oscuro](./public/images/readme/projects-desktop-dark.png)
+
+### Vista móvil
+
+<img src="./public/images/readme/home-mobile-dark.png" alt="Inicio del portfolio en móvil y modo oscuro" width="360" />
+
+## Stack
+
+- Astro 6
+- TypeScript
+- Tailwind CSS 4
+- Astro Assets para optimización de imágenes y fuentes
+- Vercel Analytics
+- Fuente local Onest
+
+## Qué incluye
+
+- Home one-page con navegación por secciones.
+- Sección de proyectos con imágenes optimizadas y enlaces externos.
+- Timeline de experiencia y estudios.
+- Bloque "Sobre mí" con highlights visuales.
+- Tema claro/oscuro con persistencia en `localStorage`.
+- Transición visual del cambio de tema cuando el navegador soporta View Transitions.
+- Metadatos SEO, Open Graph, Twitter Cards y JSON-LD de tipo `Person`.
+- `robots.txt` generado desde Astro.
+- Diseño responsive con navegación inferior en móvil.
+
+## Estructura del proyecto
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.png
+│   └── images/
+│       ├── bg-dark.webp
+│       ├── bg-light.webp
+│       └── readme/
 ├── src/
+│   ├── assets/
+│   │   ├── fonts/
+│   │   ├── icons/
+│   │   └── images/
 │   ├── components/
-│   │   └── Card.astro
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   └── styles/
+├── astro.config.mjs
+├── package.json
+├── pnpm-lock.yaml
+└── pnpm-workspace.yaml
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Las páginas viven en `src/pages/`, los componentes reutilizables en `src/components/`, la configuración de SEO y el layout base en `src/layouts/Layout.astro`, y los tokens visuales globales en `src/styles/global.css`.
