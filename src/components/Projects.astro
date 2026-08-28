@@ -3,8 +3,11 @@ import { Image } from 'astro:assets';
 import Container from '@/components/Container.astro';
 import TechnologyPill from '@/components/TechnologyPill.astro';
 import baselinelabImage from '@/assets/images/projects/baselinelab.webp';
+import baselinelabDetailImage from '@/assets/images/projects/baselinelab-detail.webp';
 import temariosImage from '@/assets/images/projects/temarios.webp';
+import temariosDetailImage from '@/assets/images/projects/temarios-detail.webp';
 import flipifriendsImage from '@/assets/images/projects/flipi-friends.webp';
+import flipifriendsDetailImage from '@/assets/images/projects/flipifriends-detail.webp';
 
 const projects = [
   {
@@ -14,6 +17,11 @@ const projects = [
     link: 'https://baselinelab.dev',
     tags: ['Astro', 'TypeScript', 'Web Components', 'CSS', 'HTML'],
     image: baselinelabImage,
+    detailImage: baselinelabDetailImage,
+    category: 'Laboratorio frontend',
+    highlight: '68 labs interactivos',
+    accent: '#ff8a00',
+    accentAlt: '#00d9c8',
   },
   {
     title: 'TemariOS',
@@ -22,6 +30,11 @@ const projects = [
     link: 'https://temariosapp.vercel.app/',
     tags: ['React 19', 'TypeScript', 'Supabase', 'CSS'],
     image: temariosImage,
+    detailImage: temariosDetailImage,
+    category: 'Plataforma educativa',
+    highlight: 'Guías, ejercicios y quizzes',
+    accent: '#20c7b5',
+    accentAlt: '#4b8cff',
   },
   {
     title: 'FlipiFriends',
@@ -30,6 +43,11 @@ const projects = [
     link: 'https://flipifriends.netlify.app',
     tags: ['React 19', 'JavaScript', 'CSS'],
     image: flipifriendsImage,
+    detailImage: flipifriendsDetailImage,
+    category: 'Juego interactivo',
+    highlight: '7 niveles de juego',
+    accent: '#43b9f5',
+    accentAlt: '#ffc84a',
   },
 ];
 ---
@@ -37,68 +55,169 @@ const projects = [
 <section id="projects" class="py-10 sm:py-20">
   <Container>
     <h2
-      class="text-foreground mb-10 flex items-center gap-x-2 text-balance text-3xl font-black"
+      class="text-foreground mb-10 flex items-center gap-x-2 text-3xl font-black text-balance"
     >
       Proyectos
     </h2>
-    <div class="grid grid-cols-2 gap-4">
+    <div
+      class="cards grid auto-rows-fr"
+      style={`--numcards: ${projects.length}`}
+    >
       {
-        projects.map(({ title, description, link, tags, image }, index) => (
-          <article class="project border-border bg-surface-elevated shadow-sjr col-span-2 flex min-w-0 flex-col gap-y-4 overflow-clip rounded-3xl border transition-[border] duration-100 [corner-shape:squircle] hover:border-4 md:col-span-1 md:first:col-span-2">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Ver proyecto ${title}`}
-            >
-              <Image
-                src={image}
-                alt={title}
-                class="w-full"
-                width={1920}
-                height={1080}
-                fetchpriority={index === 0 ? 'high' : 'low'}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-              />
-            </a>
-            <div class="space-y-2 p-5">
-              <h3 class="text-primary-strong text-2xl font-extrabold">
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-title-link inline-flex items-center gap-x-2"
-                >
-                  {title}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="project-title-icon size-5 opacity-0 transition-opacity duration-150"
+        projects.map((project, index) => (
+          <article
+            class="project-card group/card"
+            style={`--index: ${index + 1}; --project-accent: ${project.accent}; --project-accent-alt: ${project.accentAlt}`}
+          >
+            <div class="content border-border bg-surface shadow-sjr flex min-w-0 flex-col overflow-clip rounded-3xl border [corner-shape:squircle]">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visitar ${project.title}`}
+                class="focus-visible:ring-ring mask-[linear-gradient(to_bottom,#000_0%,#000_88%,transparent_100%)]] relative isolate block aspect-4/3 h-auto overflow-hidden bg-[#08110f] outline-none [-webkit-mask-image:linear-gradient(to_bottom,#000_0%,#000_88%,transparent_100%)] focus-visible:ring-3 focus-visible:ring-inset sm:aspect-auto sm:h-100 xl:h-108"
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-s-[-8%] top-[-45%] z-0 aspect-square w-[58%] rounded-full border border-[color-mix(in_srgb,var(--project-accent)_30%,transparent)] opacity-70"
+                />
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-e-[-9%] bottom-[-66%] z-0 aspect-square w-[62%] rounded-full border border-[color-mix(in_srgb,var(--project-accent-alt)_28%,transparent)] opacity-70"
+                />
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 z-0 bg-[linear-gradient(rgb(255_255_255/5%)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/5%)_1px,transparent_1px)] mask-[linear-gradient(to_bottom,#000,transparent_82%)] bg-size-[2rem_2rem]"
+                />
+
+                <span class="absolute inset-[9%_11%_8%_3%] z-10 rotate-[-1.2deg] overflow-hidden rounded-xl border border-white/25 bg-[#0b1314] shadow-[0_1.5rem_4rem_rgb(0_0_0/38%),0_0_0_1px_rgb(0_0_0/24%)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover/card:translate-x-[-0.5%] motion-safe:group-hover/card:translate-y-[-1%] motion-safe:group-hover/card:scale-[1.025] motion-safe:group-hover/card:-rotate-2 motion-reduce:transition-none sm:inset-[8%_14%_10%_4%]">
+                  <span
+                    class="flex h-5 items-center gap-1 bg-white/10 px-2"
                     aria-hidden="true"
                   >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
-                    <path d="M11 13l9 -9" />
-                    <path d="M15 4h5v5" />
-                  </svg>
-                </a>
-              </h3>
-              <p class="text-pretty">{description}</p>
-              <ul class="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <li>
-                    <TechnologyPill>{tag}</TechnologyPill>
-                  </li>
-                ))}
-              </ul>
+                    <>
+                      <i class="block aspect-square w-[0.32rem] rounded-full bg-(--project-accent) opacity-90" />
+                      <i class="block aspect-square w-[0.32rem] rounded-full bg-(--project-accent-alt) opacity-90" />
+                      <i class="block aspect-square w-[0.32rem] rounded-full bg-white/45 opacity-90" />
+                    </>
+                  </span>
+                  <Image
+                    src={project.image}
+                    alt={`Vista principal de ${project.title}`}
+                    class="block h-[calc(100%-1.25rem)] w-full object-cover object-top"
+                    widths={[640, 960, 1280]}
+                    sizes="(min-width: 72rem) 52rem, 78vw"
+                    fetchpriority={index === 0 ? 'high' : 'low'}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </span>
+
+                <span
+                  class="absolute inset-e-[3%] bottom-[6%] z-20 h-[52%] w-[49%] rotate-2 overflow-hidden rounded-xl border border-white/25 bg-[#0b1314] shadow-[0_1.5rem_4rem_rgb(0_0_0/38%),0_0_0_1px_rgb(0_0_0/24%)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover/card:translate-x-[1.5%] motion-safe:group-hover/card:translate-y-[-2%] motion-safe:group-hover/card:scale-[1.045] motion-safe:group-hover/card:rotate-3 motion-reduce:transition-none sm:inset-e-[4%] sm:bottom-[7%] sm:h-[55%] sm:w-[46%]"
+                  aria-hidden="true"
+                >
+                  <span class="flex h-5 items-center gap-1 bg-white/10 px-2">
+                    <>
+                      <i class="block aspect-square w-[0.32rem] rounded-full bg-(--project-accent) opacity-90" />
+                      <i class="block aspect-square w-[0.32rem] rounded-full bg-(--project-accent-alt) opacity-90" />
+                      <i class="block aspect-square w-[0.32rem] rounded-full bg-white/45 opacity-90" />
+                    </>
+                  </span>
+                  <Image
+                    src={project.detailImage}
+                    alt=""
+                    class="block h-[calc(100%-1.25rem)] w-full object-cover object-top"
+                    widths={[320, 480, 640]}
+                    sizes="(min-width: 72rem) 25rem, 42vw"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+
+                <span class="absolute inset-e-[2.5%] top-[5%] z-30 max-w-[54%] rounded-full border border-white/20 bg-[rgb(5_13_12/72%)] px-2.5 py-1.5 text-[clamp(0.62rem,1.5vw,0.8rem)] leading-none font-extrabold tracking-[0.02em] text-balance text-white shadow-[0_0_1.5rem_color-mix(in_srgb,var(--project-accent)_24%,transparent)] backdrop-blur-xl sm:inset-e-[3%] sm:max-w-[46%] sm:px-3 sm:py-[0.45rem]">
+                  {project.highlight}
+                </span>
+              </a>
+
+              <div class="relative z-30 -mt-10 grid gap-4 bg-[linear-gradient(to_bottom,transparent_0,var(--color-surface)_2.5rem)] px-5 pt-14 pb-5 sm:px-7 sm:pt-14 sm:pb-7">
+                <div class="min-w-0">
+                  <p class="text-subtle flex items-center gap-2.5 text-[0.72rem] font-extrabold tracking-[0.15em] uppercase">
+                    <span class="text-(--project-accent)">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {project.category}
+                  </p>
+                  <h3 class="text-foreground mt-1 text-2xl font-black sm:text-3xl">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/title focus-visible:ring-ring inline-flex items-center gap-2 decoration-[color-mix(in_srgb,var(--project-accent)_55%,transparent)] decoration-[0.12em] underline-offset-[0.18em] hover:underline focus-visible:rounded-sm focus-visible:ring-3 focus-visible:outline-none"
+                    >
+                      {project.title}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                        class="w-[0.75em] transition-transform duration-200 motion-safe:group-hover/title:translate-x-0.5 motion-safe:group-hover/title:-translate-y-0.5 motion-reduce:transition-none"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+                        <path d="M11 13l9 -9" />
+                        <path d="M15 4h5v5" />
+                      </svg>
+                    </a>
+                  </h3>
+                </div>
+
+                <p class="text-muted max-w-3xl leading-relaxed text-pretty">
+                  {project.description}
+                </p>
+
+                <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+                  <ul class="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <li>
+                        <TechnologyPill>{tag}</TechnologyPill>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group/cta focus-visible:ring-ring text-foreground flex flex-none items-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--project-accent)_45%,transparent)] bg-[color-mix(in_srgb,var(--project-accent)_12%,transparent)] px-3 py-2 text-xs font-extrabold transition-colors duration-200 hover:bg-(--project-accent) hover:text-[#071412] focus-visible:ring-3 focus-visible:outline-none motion-reduce:transition-none"
+                    aria-label={`Visitar ${project.title}`}
+                  >
+                    Visitar
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      class="transition-transform duration-200 motion-safe:group-hover/cta:translate-x-1 motion-reduce:transition-none"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m13 6 6 6-6 6" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
           </article>
         ))
@@ -108,13 +227,52 @@ const projects = [
 </section>
 
 <style>
-  .project:hover ~ .project,
-  [id='projects']:has(.project:hover) .project:not(:hover) {
-    filter: blur(4px) brightness(0.8);
+  .cards {
+    --card-top-offset: 1rem;
+
+    view-timeline-name: --cards-element-scrolls-in-body;
+
+    &:not(:last-child) {
+      padding-block-end: calc(var(--numcards) * var(--card-top-offset));
+    }
+
+    @media (width >= 40rem) {
+      --card-top-offset: 1.5rem;
+    }
+
+    article {
+      --index0: calc(var(--index) - 1);
+      --reverse-index: calc(var(--numcards) - var(--index0));
+      --reverse-index0: calc(var(--reverse-index) - 1);
+
+      position: sticky;
+      inset-block-start: 0;
+      padding-block-start: calc(var(--index) * var(--card-top-offset));
+
+      @media (width >= 40rem) {
+        inset-block-start: 2.875rem;
+      }
+    }
+
+    .content {
+      --start-range: calc(var(--index0) / var(--numcards) * 100%);
+      --end-range: calc((var(--index)) / var(--numcards) * 100%);
+
+      animation-name: scale;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      animation-timeline: --cards-element-scrolls-in-body;
+      animation-range: exit-crossing var(--start-range) exit-crossing
+        var(--end-range);
+      transform-origin: 50% 0%;
+      will-change: transform;
+    }
   }
 
-  .project-title-link:hover .project-title-icon,
-  .project:focus-within .project-title-icon {
-    opacity: 1;
+  @keyframes scale {
+    to {
+      transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index))));
+    }
   }
 </style>
