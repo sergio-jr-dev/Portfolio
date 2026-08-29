@@ -1,0 +1,128 @@
+---
+import { Image } from 'astro:assets';
+
+import { professionalExperience, education } from './experience-data.ts';
+import Container from '../shared/Container.astro';
+import Badge from '../shared/Badge.astro';
+import Work from './Work.astro';
+---
+
+<section id="experience" class="py-10 sm:py-20">
+  <Container>
+    <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+      <div class="view-reveal lg:sticky lg:top-28 lg:self-start">
+        <p
+          class="text-primary-strong mb-3 text-sm font-bold tracking-[0.18em] uppercase"
+        >
+          Trayectoria
+        </p>
+        <h2
+          class="text-foreground max-w-lg text-3xl font-black text-balance md:text-4xl"
+        >
+          Experiencia construyendo, enseñando y haciendo evolucionar productos
+        </h2>
+        <p class="text-muted mt-5 max-w-xl text-lg leading-8 text-pretty">
+          Una trayectoria entre desarrollo, producto y formación, siempre con
+          foco en convertir necesidades reales en herramientas claras y
+          mantenibles.
+        </p>
+
+        <div
+          class="mt-7 flex flex-wrap gap-2"
+          aria-label="Áreas de experiencia"
+        >
+          {
+            ['Producto digital', 'Docencia técnica', 'IA aplicada'].map(
+              (label) => <Badge>{label}</Badge>
+            )
+          }
+        </div>
+      </div>
+
+      <div class="space-y-10">
+        <ol class="relative space-y-5">
+          {professionalExperience.map((item) => <Work item={item} />)}
+        </ol>
+
+        <div class="view-reveal">
+          <div class="mb-4 flex items-center gap-3">
+            <h3 class="text-foreground text-xl font-black">Formación</h3>
+            <span class="border-border h-px flex-1 border-t"></span>
+          </div>
+          <ol class="grid gap-3 sm:grid-cols-2">
+            {
+              education.map((item) => (
+                <li
+                  class="group border-border bg-surface-elevated flex gap-4 rounded-2xl border p-4 shadow-sm [corner-shape:squircle]"
+                  style={`--logo-accent: ${item.accent}`}
+                >
+                  <div class="relative isolate size-12 flex-none">
+                    <span
+                      aria-hidden="true"
+                      class="absolute inset-0 -z-10 rotate-6 rounded-xl bg-[color-mix(in_srgb,var(--logo-accent)_24%,var(--color-surface))] transition-transform duration-300 motion-safe:group-hover:rotate-12 motion-reduce:transition-none"
+                    />
+                    <div class="border-border bg-surface absolute inset-0.5 -rotate-3 overflow-hidden rounded-xl border p-0.5 shadow-md shadow-black/10 transition-transform duration-300 motion-safe:group-hover:-rotate-6 motion-reduce:transition-none">
+                      <Image
+                        class="size-full rounded-lg object-contain"
+                        src={item.logo}
+                        alt={item.logoAlt}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div class="min-w-0">
+                    <h4 class="text-foreground font-extrabold text-pretty">
+                      {item.title}
+                    </h4>
+                    <p class="text-muted mt-1 text-sm font-semibold">
+                      {item.organization}
+                    </p>
+                    <time class="text-subtle mt-1 block text-xs font-medium">
+                      {item.date}
+                    </time>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @supports (interpolate-size: allow-keywords) {
+    .experience-details {
+      interpolate-size: allow-keywords;
+    }
+
+    .experience-details::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      opacity: 0;
+      transition:
+        block-size 350ms cubic-bezier(0.22, 1, 0.36, 1),
+        content-visibility 350ms allow-discrete,
+        opacity 180ms ease-out;
+    }
+
+    .experience-details[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+
+    @starting-style {
+      .experience-details[open]::details-content {
+        block-size: 0;
+        opacity: 0;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .experience-details::details-content {
+      transition: none;
+    }
+  }
+</style>

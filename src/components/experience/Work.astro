@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+
+import type { ProfessionalExperienceItem } from './experience-data';
+
+interface Props {
+  item: ProfessionalExperienceItem;
+}
+
+const { item } = Astro.props;
+---
+
+<li class="view-reveal">
+  <article
+    class="group border-border bg-surface-elevated shadow-sjr relative isolate overflow-hidden rounded-3xl border p-5 [corner-shape:squircle] sm:p-7"
+    style={`--logo-accent: ${item.accent}`}
+  >
+    <span
+      aria-hidden="true"
+      class="absolute -inset-e-16 -top-20 -z-10 size-52 rounded-full bg-[color-mix(in_srgb,var(--logo-accent)_18%,transparent)] blur-3xl transition-transform duration-500 motion-safe:group-hover:scale-125 motion-reduce:transition-none"
+    ></span>
+    <span
+      aria-hidden="true"
+      class="absolute inset-x-7 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--logo-accent),transparent)]"
+    ></span>
+
+    <div class="flex items-start gap-4">
+      <div class="relative isolate size-16 flex-none sm:size-18">
+        <span
+          aria-hidden="true"
+          class="absolute inset-0 -z-10 rotate-6 rounded-[1.35rem] border border-[color-mix(in_srgb,var(--logo-accent)_45%,var(--color-border))] bg-[color-mix(in_srgb,var(--logo-accent)_18%,var(--color-surface))] transition-transform duration-300 motion-safe:group-hover:rotate-12 motion-reduce:transition-none"
+        ></span>
+        <div
+          class="border-border bg-surface absolute inset-1 -rotate-3 overflow-hidden rounded-2xl border p-1 shadow-lg shadow-black/10 transition-transform duration-300 motion-safe:group-hover:scale-105 motion-safe:group-hover:-rotate-6 motion-reduce:transition-none"
+        >
+          <Image
+            class="size-full rounded-xl object-contain"
+            src={item.logo}
+            alt={item.logoAlt}
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <div class="min-w-0 flex-1">
+        <h3 class="text-foreground text-xl font-black sm:text-2xl">
+          {item.title}
+        </h3>
+        <p class="text-foreground mt-1 font-bold">
+          {item.organization}
+        </p>
+        <time class="text-subtle mt-1 block text-sm font-medium">
+          {item.date}
+        </time>
+      </div>
+    </div>
+
+    <p class="text-muted mt-5 text-base leading-7 text-pretty sm:text-lg">
+      {item.summary}
+    </p>
+
+    <details
+      class="experience-details group/details border-border -mx-5 mt-5 -mb-5 border-t sm:-mx-7 sm:-mb-7"
+    >
+      <summary
+        class="focus-visible:ring-ring text-primary-strong flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-extrabold outline-none focus-visible:ring-2 focus-visible:ring-inset sm:px-7 [&::-webkit-details-marker]:hidden"
+      >
+        <span class="group-open/details:hidden">
+          Ver experiencia completa
+        </span>
+        <span class="hidden group-open/details:inline">
+          Ocultar experiencia completa
+        </span>
+        <span
+          aria-hidden="true"
+          class="text-xl leading-none transition-transform duration-200 group-open/details:rotate-45 motion-reduce:transition-none"
+        >
+          +
+        </span>
+      </summary>
+      <p
+        class="text-muted px-5 pt-1 pb-5 text-base leading-7 text-pretty sm:px-7 sm:pb-7"
+      >
+        {item.description}
+      </p>
+    </details>
+  </article>
+</li>

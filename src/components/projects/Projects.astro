@@ -1,0 +1,37 @@
+---
+import { projects } from './data-projects';
+import Project from './Project.astro';
+import Container from '../shared/Container.astro';
+---
+
+<section id="projects" class="py-10 sm:py-20">
+  <Container>
+    <h2
+      class="text-foreground mb-10 flex items-center gap-x-2 text-3xl font-black text-balance"
+    >
+      Proyectos
+    </h2>
+    <div
+      class="projects-cards grid auto-rows-fr"
+      style={`--numcards: ${projects.length}`}
+    >
+      {
+        projects.map((project, index) => (
+          <Project project={project} index={index} />
+        ))
+      }
+    </div>
+  </Container>
+</section>
+
+<style>
+  .projects-cards {
+    --card-top-offset: 1rem;
+
+    view-timeline-name: --cards-element-scrolls-in-body;
+
+    @media (width >= 40rem) {
+      --card-top-offset: 1.5rem;
+    }
+  }
+</style>

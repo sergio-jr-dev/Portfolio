@@ -3,8 +3,8 @@ import HomeIcon from '@/assets/icons/HomeIcon.svg';
 import AppWindowIcon from '@/assets/icons/AppWindowIcon.svg';
 import BriefCaseIcon from '@/assets/icons/BriefCaseIcon.svg';
 import UserIcon from '@/assets/icons/UserIcon.svg';
-import Container from './Container.astro';
-import ThemeSelector from './ThemeSelector.astro';
+import Container from '../shared/Container.astro';
+import ThemeSelector from '../shared/ThemeSelector.astro';
 import HeaderLink from './HeaderLink.astro';
 
 const links = [
@@ -31,11 +31,11 @@ const links = [
 ];
 ---
 
-<header class="sm:inset-bs-3 inset-be-3 fixed inset-x-0 z-10 sm:sticky">
+<header class="fixed inset-x-0 inset-be-3 z-10 sm:sticky sm:inset-bs-3">
   <Container>
     <nav
       aria-label="Navegación principal"
-      class="border-border text-muted sm:animate-nav-shadow bg-surface/75 backdrop-blur-xs shadow-sjr sm:timeline-scroll sm:animate-range-[entry_50px_150px] mx-auto flex items-center rounded-full border p-0.5 text-sm sm:max-w-max sm:text-base sm:motion-reduce:animate-none"
+      class="border-border text-muted sm:animate-nav-shadow bg-surface/75 shadow-sjr sm:timeline-scroll sm:animate-range-[entry_50px_150px] mx-auto flex items-center rounded-full border p-0.5 text-sm backdrop-blur-xs sm:max-w-max sm:text-base sm:motion-reduce:animate-none"
     >
       {links.map((link) => <HeaderLink {...link} />)}
       <ThemeSelector class="ms-0.5 hidden sm:flex" />

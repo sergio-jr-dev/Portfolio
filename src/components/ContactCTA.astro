@@ -1,0 +1,66 @@
+---
+import Container from '@/components/shared/Container.astro';
+import GmailIcon from '@/assets/icons/GmailIcon.svg';
+import LinkedinIcon from '@/assets/icons/LinkedinIcon.svg';
+---
+
+<section class="pt-16 pb-10 sm:pt-28 sm:pb-20" aria-labelledby="contact-title">
+  <Container>
+    <div
+      class="view-reveal border-border bg-surface-elevated shadow-sjr relative isolate overflow-hidden rounded-4xl border px-5 py-10 text-center [corner-shape:squircle] sm:px-10 sm:py-14"
+    >
+      <span
+        aria-hidden="true"
+        class="bg-primary-soft absolute -inset-s-20 -top-24 -z-10 size-72 rounded-full opacity-90 blur-3xl"
+      ></span>
+      <span
+        aria-hidden="true"
+        class="bg-accent-soft absolute -inset-e-24 -bottom-28 -z-10 size-80 rounded-full opacity-80 blur-3xl"
+      ></span>
+      <p
+        class="text-primary-strong mb-3 text-sm font-bold tracking-[0.18em] uppercase"
+      >
+        Contacto
+      </p>
+      <h2
+        id="contact-title"
+        class="text-foreground text-3xl font-black text-balance md:text-5xl"
+      >
+        Hablemos de la próxima oportunidad
+      </h2>
+      <p
+        class="text-muted mx-auto mt-4 max-w-2xl text-lg leading-8 text-pretty"
+      >
+        Si crees que mi experiencia puede encajar en tu equipo, en una
+        colaboración o en un nuevo reto profesional, estaré encantado de hablar.
+      </p>
+
+      <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+        <a
+          href="mailto:sergiojimenezrubio.dev@gmail.com"
+          class="bg-primary text-surface focus-visible:ring-ring focus-visible:ring-offset-background group dark:text-background inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-3 font-extrabold shadow-md transition duration-200 hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 motion-reduce:transition-none"
+          aria-label="Enviar un email a Sergio Jiménez"
+        >
+          <GmailIcon
+            class="size-5 transition-transform duration-200 motion-safe:group-hover:scale-110 motion-reduce:transition-none"
+            aria-hidden="true"
+          />
+          Escríbeme
+        </a>
+        <a
+          href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border-border bg-surface text-foreground focus-visible:ring-ring focus-visible:ring-offset-background group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-3 font-extrabold shadow-sm transition duration-200 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
+          aria-label="Abrir el perfil de LinkedIn de Sergio Jiménez"
+        >
+          <LinkedinIcon
+            class="size-5 transition-transform duration-200 motion-safe:group-hover:scale-110 motion-reduce:transition-none"
+            aria-hidden="true"
+          />
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>

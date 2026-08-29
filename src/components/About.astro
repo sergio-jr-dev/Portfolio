@@ -1,65 +1,82 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
-import Container from "@/components/Container.astro";
-import aiAppliedImage from "@/assets/images/about/ia-aplicada.webp";
-import frontendJudgementImage from "@/assets/images/about/frontend-criterio.webp";
-import productLearningImage from "@/assets/images/about/producto-aprendizaje.webp";
+import Container from './shared/Container.astro';
+import aiAppliedImage from '@/assets/images/about/ia-aplicada.webp';
+import frontendJudgementImage from '@/assets/images/about/frontend-criterio.webp';
+import productLearningImage from '@/assets/images/about/producto-aprendizaje.webp';
+import Badge from './shared/Badge.astro';
 
-const HIGHLIGHTS = [
+const highlights = [
   {
-    title: "Producto y aprendizaje",
+    title: 'Producto y aprendizaje',
     description:
-      "He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.",
+      'He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.',
     image: productLearningImage,
     imageAlt:
-      "Icono 3D de aprendizaje práctico con cuaderno, ventana de aplicación y bloques de producto",
+      'Icono 3D de aprendizaje práctico con cuaderno, ventana de aplicación y bloques de producto',
+    accent: '#14b8a6',
   },
   {
-    title: "Frontend con criterio",
+    title: 'Frontend con criterio',
     description:
-      "Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.",
+      'Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.',
     image: frontendJudgementImage,
     imageAlt:
-      "Icono 3D de frontend con ventana web, capas de interfaz, cursor y símbolo de accesibilidad",
+      'Icono 3D de frontend con ventana web, capas de interfaz, cursor y símbolo de accesibilidad',
+    accent: '#2563eb',
   },
   {
-    title: "IA aplicada",
+    title: 'IA aplicada',
     description:
-      "Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.",
+      'Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.',
     image: aiAppliedImage,
     imageAlt:
-      "Icono 3D de IA aplicada con red neuronal, código, documentación y validación técnica",
+      'Icono 3D de IA aplicada con red neuronal, código, documentación y validación técnica',
+    accent: '#f59e0b',
   },
 ];
 ---
 
 <section id="about" class="py-10 sm:py-20">
   <Container>
-    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-      <div>
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-14">
+      <div class="view-reveal lg:sticky lg:top-28">
         <p
-          class="text-primary-strong mb-3 text-sm font-bold uppercase tracking-[0.18em]"
+          class="text-primary-strong mb-3 text-sm font-bold tracking-[0.18em] uppercase"
         >
           Sobre mí
         </p>
         <h2
-          class="text-foreground text-balance text-3xl font-black md:text-4xl"
+          class="text-foreground text-3xl font-black text-balance md:text-4xl"
         >
           Desarrollo interfaces y herramientas que convierten ideas en producto
-          usable.
+          usable
         </h2>
+        <ul class="mt-6 flex flex-wrap gap-2" aria-label="Forma de trabajar">
+          {
+            ['Autonomía', 'Criterio', 'Detalle visual'].map((quality) => (
+              <li>
+                <Badge>{quality}</Badge>
+              </li>
+            ))
+          }
+        </ul>
       </div>
 
-      <div class="text-muted space-y-5 text-pretty text-lg leading-8">
-        <p>
+      <div class="view-reveal grid gap-4">
+        <p
+          class="border-border bg-surface-elevated text-muted rounded-3xl border p-5 text-lg leading-8 text-pretty shadow-sm [corner-shape:squircle] sm:p-6"
+        >
           Soy desarrollador Frontend / Full Stack con experiencia en
           aplicaciones web, herramientas propias y acompañamiento técnico. En
           SocraTech he desarrollado aplicaciones, impartido docencia y revisado
           proyectos, ayudando a que soluciones de frontend y backend pasaran de
           ejercicio a producto funcional.
         </p>
-        <p>
+        <p
+          class="border-primary/35 bg-primary-soft/40 text-muted ms-0 rounded-3xl border p-5 text-lg leading-8 text-pretty [corner-shape:squircle] sm:ms-8 sm:p-6"
+        >
           Mi forma de trabajar mezcla autonomía, enfoque práctico y atención al
           detalle visual. Me interesa construir sistemas que sean sencillos de
           usar, fáciles de explicar y sostenibles para seguir evolucionándolos.
@@ -67,25 +84,40 @@ const HIGHLIGHTS = [
       </div>
     </div>
 
-    <div class="mt-24 grid gap-x-4 gap-y-20 md:grid-cols-3">
+    <div class="mt-20 grid gap-x-4 gap-y-16 md:mt-24 md:grid-cols-3 md:gap-y-0">
       {
-        HIGHLIGHTS.map(({ title, description, image, imageAlt }) => (
-          <article class="border-border bg-surface-elevated relative rounded-3xl border p-5 pt-16 shadow-sm shadow-black/5 [corner-shape:squircle] sm:pt-20">
-            <div class="bg-background-soft border-border absolute left-1/2 top-0 size-24 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-md border shadow-sm shadow-black/10 sm:size-28">
-              <Image
-                src={image}
-                alt={imageAlt}
-                width={640}
-                height={640}
-                class="h-full w-full object-cover"
-                loading="lazy"
-                decoding="async"
+        highlights.map(
+          ({ title, description, image, imageAlt, accent }, index) => (
+            <article
+              class:list={[
+                'view-reveal group border-border bg-surface-elevated shadow-sjr relative isolate rounded-3xl border p-5 pt-16 transition duration-300 [corner-shape:squircle] motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-lg motion-reduce:transition-none sm:pt-20',
+                index === 1 &&
+                  'motion-safe:hover:translate-y-7 md:translate-y-8',
+              ]}
+              style={`--about-accent: ${accent}`}
+            >
+              <span
+                aria-hidden="true"
+                class="absolute inset-x-5 top-0 -z-10 h-px bg-[linear-gradient(90deg,transparent,var(--about-accent),transparent)]"
               />
-            </div>
-            <h3 class="text-foreground mb-3 text-lg font-extrabold">{title}</h3>
-            <p class="text-pretty leading-6">{description}</p>
-          </article>
-        ))
+              <div class="bg-background-soft border-border absolute top-0 left-1/2 size-24 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border shadow-md shadow-black/10 transition duration-300 motion-safe:group-hover:translate-y-[-55%] motion-safe:group-hover:scale-105 motion-safe:group-hover:rotate-2 motion-reduce:transition-none sm:size-28">
+                <Image
+                  src={image}
+                  alt={imageAlt}
+                  width={640}
+                  height={640}
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <h3 class="text-foreground mb-3 text-lg font-extrabold">
+                {title}
+              </h3>
+              <p class="text-muted leading-6 text-pretty">{description}</p>
+            </article>
+          )
+        )
       }
     </div>
   </Container>

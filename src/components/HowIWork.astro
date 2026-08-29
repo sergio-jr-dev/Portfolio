@@ -1,0 +1,79 @@
+---
+import Container from './shared/Container.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Entender',
+    description:
+      'Aclarar objetivos, usuarios y restricciones antes de tomar decisiones de interfaz.',
+    accent: '#14b8a6',
+  },
+  {
+    number: '02',
+    title: 'Estructurar',
+    description:
+      'Ordenar contenido, interacción y arquitectura para que el producto sea fácil de comprender.',
+    accent: '#2563eb',
+  },
+  {
+    number: '03',
+    title: 'Construir',
+    description:
+      'Convertir la estructura en una interfaz funcional, accesible y preparada para evolucionar.',
+    accent: '#f59e0b',
+  },
+  {
+    number: '04',
+    title: 'Validar y evolucionar',
+    description:
+      'Probar, ajustar y refinar con criterio técnico hasta cerrar una solución sólida.',
+    accent: '#8b5cf6',
+  },
+];
+---
+
+<section class="py-10 sm:py-20" aria-labelledby="process-title">
+  <Container>
+    <div class="view-reveal mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+      <p
+        class="text-primary-strong mb-3 text-sm font-bold tracking-[0.18em] uppercase"
+      >
+        Cómo trabajo
+      </p>
+      <h2
+        id="process-title"
+        class="text-foreground text-3xl font-black text-balance md:text-4xl"
+      >
+        De una idea difusa a un producto que se entiende y funciona.
+      </h2>
+    </div>
+
+    <ol class="relative grid gap-4 md:grid-cols-4 md:gap-3">
+      {
+        steps.map((step) => (
+          <li
+            class="view-reveal group relative"
+            style={`--step-accent: ${step.accent}`}
+          >
+            <article class="border-border bg-surface-elevated shadow-sjr relative h-full overflow-hidden rounded-3xl border p-5 transition duration-300 [corner-shape:squircle] motion-safe:group-hover:shadow-lg motion-reduce:transition-none sm:p-6">
+              <span
+                aria-hidden="true"
+                class="absolute -inset-e-10 -top-12 size-36 rounded-full bg-[color-mix(in_srgb,var(--step-accent)_16%,transparent)] blur-2xl transition-transform duration-500 motion-safe:group-hover:scale-125 motion-reduce:transition-none"
+              />
+              <span class="relative mb-7 flex size-14 items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--step-accent)_38%,var(--color-border))] bg-[color-mix(in_srgb,var(--step-accent)_12%,var(--color-surface))] text-lg font-black text-[color-mix(in_srgb,var(--step-accent)_75%,var(--color-foreground))] shadow-sm">
+                {step.number}
+              </span>
+              <h3 class="text-foreground relative text-xl font-black text-balance">
+                {step.title}
+              </h3>
+              <p class="text-muted relative mt-3 leading-7 text-pretty">
+                {step.description}
+              </p>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </Container>
+</section>

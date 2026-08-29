@@ -1,16 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 
-import Container from '@/components/Container.astro';
-import Badge from '@/components/Badge.astro';
-import IconPill from '@/components/IconPill.astro';
+import Container from '../shared/Container.astro';
+import Badge from '../shared/Badge.astro';
+import IconPill from './IconPill.astro';
+import Indicator from './Indicator.astro';
 import GitHubIcon from '@/assets/icons/GitHubIcon.svg';
 import LinkedinIcon from '@/assets/icons/LinkedinIcon.svg';
 import GmailIcon from '@/assets/icons/GmailIcon.svg';
 import profileImg from '@/assets/images/perfil-linkedin.webp';
 ---
 
-<section id="start" class="sm:mbs-16 py-10 sm:py-20">
+<section id="start" class="py-10 sm:mbs-16 sm:py-20">
   <Container>
     <div class="flex flex-col items-center gap-6 sm:flex-row sm:gap-0">
       <div class="space-y-6 sm:w-[65%]">
@@ -18,12 +19,17 @@ import profileImg from '@/assets/images/perfil-linkedin.webp';
         <h1 class="typing-title text-4xl font-black md:text-6xl">
           Sergio Jiménez
         </h1>
-        <p class="text-pretty text-xl lg:text-2xl">
+        <p class="text-xl text-pretty lg:text-2xl">
           Desarrollador web con más de 5 años de experiencia creando
           aplicaciones, herramientas propias e interfaces centradas en
           usabilidad. Trabajo desde Albacete con foco en frontend, perfil
           full-stack, docencia técnica e IA aplicada al flujo de desarrollo.
         </p>
+        <dl class="flex flex-wrap gap-2" aria-label="Datos destacados">
+          <Indicator eyebrown="Experiencia" text="5+ años" />
+          <Indicator eyebrown="Acompañamiento" text="20+ proyectos" />
+          <Indicator eyebrown="Enfoque" text="Producto y accesibilidad" />
+        </dl>
         <nav class="text-muted flex flex-wrap gap-3">
           <IconPill
             href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/"
@@ -60,13 +66,23 @@ import profileImg from '@/assets/images/perfil-linkedin.webp';
           </IconPill>
         </nav>
       </div>
-      <div class="flex justify-center sm:w-[35%] sm:justify-end">
+      <div
+        class="relative isolate flex justify-center sm:w-[35%] sm:justify-end"
+      >
+        <span
+          aria-hidden="true"
+          class="bg-primary-soft absolute inset-1/2 -z-10 aspect-square w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+        ></span>
+        <span
+          aria-hidden="true"
+          class="border-border absolute inset-1/2 -z-10 aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 rotate-12 rounded-[40%] border opacity-70"
+        ></span>
         <Image
           src={profileImg}
           alt="Sergio Jiménez Rubio"
           loading="eager"
           fetchpriority="high"
-          class="animate-blurred-fade-in mask-[linear-gradient(to_bottom,#000_85%,transparent_100%)] drop-shadow-primary/70 drop-shadow-xs h-auto w-[min(16rem,100%)] object-contain sm:w-full sm:max-w-64 md:max-w-72"
+          class="animate-blurred-fade-in drop-shadow-primary/70 h-auto w-[min(16rem,100%)] mask-[linear-gradient(to_bottom,#000_85%,transparent_100%)] object-contain drop-shadow-xs sm:w-full sm:max-w-64 md:max-w-72"
         />
       </div>
     </div>

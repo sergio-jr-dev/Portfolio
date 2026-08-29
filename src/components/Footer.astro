@@ -1,55 +1,23 @@
 ---
-import Container from '@/components/Container.astro';
-import ThemeSelector from '@/components/ThemeSelector.astro';
-import GitHubIcon from '@/assets/icons/GitHubIcon.svg';
-import LinkedinIcon from '@/assets/icons/LinkedinIcon.svg';
-import GmailIcon from '@/assets/icons/GmailIcon.svg';
+import Container from "./shared/Container.astro";
 
-const socialLinks = [
-  {
-    href: 'https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/',
-    label: 'Abrir perfil de Linkedin de Sergio Jiménez',
-    icon: LinkedinIcon,
-  },
-  {
-    href: 'mailto:sergiojimenezrubio.dev@gmail.com',
-    label: 'Enviar email a Sergio Jiménez',
-    icon: GmailIcon,
-  },
-  {
-    href: 'https://github.com/sergio-jr-dev',
-    label: 'Abrir perfil de GitHub de Sergio Jiménez',
-    icon: GitHubIcon,
-  },
-];
+const currentYear = new Date().getFullYear();
 ---
 
 <footer
-  class="border-border bg-surface-elevated text-subtle mbe-20 sm:mbe-0 mt-auto border-y py-4 text-sm sm:border-t"
+  class="border-border bg-surface-elevated text-subtle mbe-20 mt-auto border-y py-4 text-sm sm:mbe-0 sm:border-t"
 >
   <Container>
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <div class="flex items-center gap-4">
-        <p>Sergio Jiménez Rubio</p>
-      </div>
-      <nav class="flex items-center gap-2" aria-label="Redes sociales">
-        {
-          socialLinks.map(({ href, label, icon: Icon }) => (
-            <a
-              href={href}
-              target={href.startsWith('mailto:') ? undefined : '_blank'}
-              rel={
-                href.startsWith('mailto:') ? undefined : 'noopener noreferrer'
-              }
-              aria-label={label}
-              class="hover:text-foreground focus-visible:ring-ring focus-visible:ring-offset-background inline-flex size-9 items-center justify-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-            >
-              <Icon class="size-5" aria-hidden="true" />
-            </a>
-          ))
-        }
-      </nav>
-      <ThemeSelector class="flex sm:hidden" />
+    <div
+      class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-center sm:text-start"
+    >
+      <p>&copy; {currentYear} Sergio Jiménez Rubio</p>
+      <span
+        class="bg-border hidden size-1 rounded-full sm:block"
+        aria-hidden="true"></span>
+      <p class="text-muted font-medium">
+        Construyo con criterio, claridad y atención al detalle.
+      </p>
     </div>
   </Container>
 </footer>

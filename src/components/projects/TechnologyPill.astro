@@ -1,0 +1,110 @@
+---
+import CSSIcon from "@/assets/icons/CSSIcon.svg";
+import HTMLIcon from "@/assets/icons/HTMLIcon.svg";
+
+interface Props {
+  technology: string;
+}
+
+const { technology } = Astro.props;
+
+const technologyStyles: Record<string, { color: string; background: string }> =
+  {
+    Astro: { color: "#ff5d01", background: "#ff5d0118" },
+    "React 19": { color: "#087ea4", background: "#149eca18" },
+    TypeScript: { color: "#3178c6", background: "#3178c618" },
+    JavaScript: { color: "#806c00", background: "#f7df1e24" },
+    Supabase: { color: "#16875f", background: "#3ecf8e1d" },
+    "Web Components": { color: "#6d4aff", background: "#6d4aff18" },
+    CSS: { color: "#1572b6", background: "#1572b618" },
+    HTML: { color: "#d94a24", background: "#e34f2618" },
+  };
+
+const style = technologyStyles[technology] ?? {
+  color: "var(--color-primary-strong)",
+  background: "var(--color-primary-soft)",
+};
+---
+
+<div
+  class="flex items-center justify-center gap-1.5 rounded-full border border-[color-mix(in_srgb,var(--technology-color)_28%,var(--color-border))] bg-(--technology-background) px-2.5 py-1 text-xs font-bold text-[color-mix(in_srgb,var(--technology-color)_78%,var(--color-foreground))]"
+  style={`--technology-color: ${style.color}; --technology-background: ${style.background}`}
+>
+  {
+    technology === "HTML" ? (
+      <HTMLIcon class="size-3.5" aria-hidden="true" />
+    ) : technology === "CSS" ? (
+      <CSSIcon class="size-3.5" aria-hidden="true" />
+    ) : technology === "React 19" ? (
+      <svg class="size-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="1.8" fill="currentColor" />
+        <ellipse
+          cx="12"
+          cy="12"
+          rx="10"
+          ry="4.2"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <ellipse
+          cx="12"
+          cy="12"
+          rx="10"
+          ry="4.2"
+          stroke="currentColor"
+          stroke-width="1.5"
+          transform="rotate(60 12 12)"
+        />
+        <ellipse
+          cx="12"
+          cy="12"
+          rx="10"
+          ry="4.2"
+          stroke="currentColor"
+          stroke-width="1.5"
+          transform="rotate(120 12 12)"
+        />
+      </svg>
+    ) : technology === "Supabase" ? (
+      <svg
+        class="size-3.5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M13.2 2.5 5.6 13h6.2l-1 8.5L18.4 11h-6.2l1-8.5Z" />
+      </svg>
+    ) : technology === "Astro" ? (
+      <svg
+        class="size-3.5"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M8.2 3.2h7.6l4 14.1-4.1-2.4-1.1-3.5H9.4l-1.1 3.5-4.1 2.4 4-14.1Zm2.2 5.1h3.2L12 3.8l-1.6 4.5Z" />
+        <path d="M9.2 17.3c.8.5 1.7.7 2.8.7s2-.2 2.8-.7c-.2 2.4-1.1 3.7-2.8 4.3-1.7-.6-2.6-1.9-2.8-4.3Z" />
+      </svg>
+    ) : technology === "Web Components" ? (
+      <svg
+        class="size-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />
+      </svg>
+    ) : (
+      <span
+        class="flex size-3.5 items-center justify-center rounded-[0.2rem] bg-(--technology-color) text-[0.47rem] leading-none font-black text-white"
+        aria-hidden="true"
+      >
+        {technology === "TypeScript" ? "TS" : "JS"}
+      </span>
+    )
+  }
+  <span>{technology}</span>
+</div>

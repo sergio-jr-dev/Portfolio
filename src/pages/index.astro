@@ -1,9 +1,11 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Experience from "@/components/Experience.astro";
-import Projects from "@/components/Projects.astro";
-import StartDescription from "@/components/StartDescription.astro";
-import About from "@/components/About.astro";
+import Layout from '@/layouts/Layout.astro';
+import Experience from '@/components/experience/Experience.astro';
+import Projects from '@/components/projects/Projects.astro';
+import StartDescription from '@/components/start-description/StartDescription.astro';
+import About from '@/components/About.astro';
+import HowIWork from '@/components/HowIWork.astro';
+import ContactCTA from '@/components/ContactCTA.astro';
 ---
 
 <Layout
@@ -13,5 +15,7 @@ import About from "@/components/About.astro";
   <StartDescription />
   <Projects />
   <Experience />
+  <HowIWork />
   <About />
+  <ContactCTA />
 </Layout>

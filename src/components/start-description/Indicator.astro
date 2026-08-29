@@ -1,0 +1,15 @@
+---
+interface Props {
+  eyebrown: string;
+  text: string;
+}
+
+const { eyebrown, text } = Astro.props;
+---
+
+<div
+  class="border-border bg-surface-elevated shadow-sjr flex w-max max-w-full flex-col gap-0.5 rounded-2xl border px-4 py-3 backdrop-blur-sm [corner-shape:squircle]"
+>
+  <dt class="text-subtle text-xs font-semibold">{eyebrown}</dt>
+  <dd class="text-foreground text-sm font-black sm:text-base">{text}</dd>
+</div>
