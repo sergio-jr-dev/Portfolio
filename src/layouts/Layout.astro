@@ -1,13 +1,14 @@
 ---
-import { Font } from "astro:assets";
-import Analytics from "@vercel/analytics/astro";
+import { Font } from 'astro:assets';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/header/Header.astro";
-import ThemeSelector from "@/components/shared/ThemeSelector.astro";
-import profileImg from "@/assets/images/perfil-linkedin.webp";
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/header/Header.astro';
+import ThemeSelector from '@/components/shared/ThemeSelector.astro';
+import profileImg from '@/assets/images/perfil-linkedin.webp';
 
-import "../styles/global.css";
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -23,30 +24,30 @@ const socialImage = Astro.site
   ? new URL(profileImg.src, Astro.site).toString()
   : undefined;
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Sergio Jiménez Rubio",
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sergio Jiménez Rubio',
   url: canonicalUrl,
   image: socialImage,
-  jobTitle: "Desarrollador Frontend / Full Stack",
+  jobTitle: 'Desarrollador Frontend / Full Stack',
   address: {
-    "@type": "PostalAddress",
-    addressLocality: "Albacete",
-    addressCountry: "ES",
+    '@type': 'PostalAddress',
+    addressLocality: 'Albacete',
+    addressCountry: 'ES',
   },
-  email: "mailto:sergiojimenezrubio.dev@gmail.com",
+  email: 'mailto:sergiojimenezrubio.dev@gmail.com',
   sameAs: [
-    "https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/",
-    "https://github.com/sergio-jr-dev",
+    'https://www.linkedin.com/in/sergio-jim%C3%A9nez-rubio/',
+    'https://github.com/sergio-jr-dev',
   ],
   knowsAbout: [
-    "Frontend",
-    "Full Stack",
-    "Astro",
-    "React",
-    "TypeScript",
-    "Supabase",
-    "IA aplicada al desarrollo",
+    'Frontend',
+    'Full Stack',
+    'Astro',
+    'React',
+    'TypeScript',
+    'Supabase',
+    'IA aplicada al desarrollo',
   ],
 };
 ---
@@ -76,7 +77,7 @@ const jsonLd = {
     }
     <meta
       name="twitter:card"
-      content={socialImage ? "summary_large_image" : "summary"}
+      content={socialImage ? 'summary_large_image' : 'summary'}
     />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -96,6 +97,7 @@ const jsonLd = {
     <title>{title}</title>
     <Font cssVariable="--font-onest" />
     <Analytics />
+    <SpeedInsights />
     <script
       type="application/ld+json"
       is:inline
