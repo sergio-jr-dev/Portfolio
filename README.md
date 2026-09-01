@@ -1,6 +1,6 @@
 # Portfolio de Sergio Jiménez Rubio
 
-Repositorio del portfolio personal de Sergio Jiménez Rubio, desarrollado con Astro y Tailwind CSS. El objetivo del proyecto es mostrar mi perfil como desarrollador Frontend / Full Stack, documentar proyectos destacados y dejar visible cómo está construido el sitio para que pueda revisarse en público.
+Portfolio personal desarrollado con Astro, TypeScript y Tailwind CSS. Presenta mi perfil como desarrollador Frontend / Full Stack, mi trayectoria y una selección de productos en los que he trabajado, con especial atención a la usabilidad, la accesibilidad y el detalle visual.
 
 ## Redes
 
@@ -15,38 +15,39 @@ Repositorio del portfolio personal de Sergio Jiménez Rubio, desarrollado con As
 
 ## Capturas
 
-### Inicio en desktop
+### Inicio en escritorio · tema claro
 
 ![Inicio del portfolio en modo claro](./public/images/readme/home-desktop-light.png)
 
-### Proyectos en modo oscuro
+### Proyectos en escritorio · tema oscuro
 
 ![Sección de proyectos del portfolio en modo oscuro](./public/images/readme/projects-desktop-dark.png)
 
-### Vista móvil
+### Inicio en móvil · tema oscuro
 
 <img src="./public/images/readme/home-mobile-dark.png" alt="Inicio del portfolio en móvil y modo oscuro" width="360" />
 
 ## Stack
 
-- Astro 6
-- TypeScript
+- Astro 7
+- TypeScript 6
 - Tailwind CSS 4
-- Astro Assets para optimización de imágenes y fuentes
-- Vercel Analytics
-- Fuente local Onest
+- Astro Assets y Astro Fonts
+- Vercel Analytics y Speed Insights
+- Fuente variable local Onest
 
 ## Qué incluye
 
-- Home one-page con navegación por secciones.
-- Sección de proyectos con imágenes optimizadas y enlaces externos.
-- Timeline de experiencia y estudios.
-- Bloque "Sobre mí" con highlights visuales.
+- Home de una sola página con navegación activa por secciones.
+- Proyectos destacados en tarjetas apilables con capturas optimizadas, tecnologías y enlaces externos.
+- Trayectoria profesional y formación con detalles desplegables.
+- Secciones dedicadas al proceso de trabajo, perfil profesional y contacto.
 - Tema claro/oscuro con persistencia en `localStorage`.
-- Transición visual del cambio de tema cuando el navegador soporta View Transitions.
+- Transición de tema mediante View Transitions cuando el navegador lo permite.
+- Experiencia responsive con navegación inferior y selector de tema independiente en móvil.
+- Preferencias de movimiento reducido, enlace para saltar al contenido y estados de foco visibles.
 - Metadatos SEO, Open Graph, Twitter Cards y JSON-LD de tipo `Person`.
-- `robots.txt` generado desde Astro.
-- Diseño responsive con navegación inferior en móvil.
+- `robots.txt` generado como endpoint de Astro.
 
 ## Estructura del proyecto
 
@@ -64,6 +65,11 @@ Repositorio del portfolio personal de Sergio Jiménez Rubio, desarrollado con As
 │   │   ├── icons/
 │   │   └── images/
 │   ├── components/
+│   │   ├── experience/
+│   │   ├── header/
+│   │   ├── projects/
+│   │   ├── shared/
+│   │   └── start-description/
 │   ├── layouts/
 │   ├── pages/
 │   └── styles/
@@ -73,4 +79,4 @@ Repositorio del portfolio personal de Sergio Jiménez Rubio, desarrollado con As
 └── pnpm-workspace.yaml
 ```
 
-Las páginas viven en `src/pages/`, los componentes reutilizables en `src/components/`, la configuración de SEO y el layout base en `src/layouts/Layout.astro`, y los tokens visuales globales en `src/styles/global.css`.
+Las rutas viven en `src/pages/`, los componentes se agrupan por área en `src/components/`, el layout base y los metadatos están en `src/layouts/Layout.astro`, y los tokens visuales, temas y animaciones globales se definen en `src/styles/global.css`.
