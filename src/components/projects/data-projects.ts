@@ -1,6 +1,8 @@
 import type { ImageMetadata } from "astro";
 import baselinelabImage from "@/assets/images/projects/baselinelab.webp";
 import baselinelabDetailImage from "@/assets/images/projects/baselinelab-detail.webp";
+import codeQuizImage from "@/assets/images/projects/code-quiz.webp";
+import codeQuizDetailImage from "@/assets/images/projects/code-quiz-detail.webp";
 import temariosImage from "@/assets/images/projects/temarios.webp";
 import temariosDetailImage from "@/assets/images/projects/temarios-detail.webp";
 import flipifriendsImage from "@/assets/images/projects/flipi-friends.webp";
@@ -32,6 +34,19 @@ export const projects: Project[] = [
     highlight: "68 labs interactivos",
     accent: "#ff8a00",
     accentAlt: "#00d9c8",
+  },
+  {
+    title: "Code Quiz",
+    description:
+      "Quiz interactivo para practicar HTML, CSS y JavaScript con preguntas por nivel, modo normal o con cronómetro, explicaciones de cada respuesta y repaso de errores.",
+    link: "https://codequiz-game.vercel.app/",
+    tags: ["React 19", "TypeScript", "Vitest", "Zustand"],
+    image: codeQuizImage,
+    detailImage: codeQuizDetailImage,
+    category: "Aprendizaje interactivo",
+    highlight: "180 preguntas · 3 materias",
+    accent: "#a78bfa",
+    accentAlt: "#7c3aed",
   },
   {
     title: "TemariOS",

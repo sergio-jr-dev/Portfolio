@@ -13,6 +13,8 @@ const technologyStyles: Record<string, { color: string; background: string }> =
     Astro: { color: "#ff5d01", background: "#ff5d0118" },
     "React 19": { color: "#087ea4", background: "#149eca18" },
     TypeScript: { color: "#3178c6", background: "#3178c618" },
+    Vitest: { color: "#5c7618", background: "#a9d52e26" },
+    Zustand: { color: "#7d5230", background: "#a8784b26" },
     JavaScript: { color: "#806c00", background: "#f7df1e24" },
     Supabase: { color: "#16875f", background: "#3ecf8e1d" },
     "Web Components": { color: "#6d4aff", background: "#6d4aff18" },
@@ -102,7 +104,13 @@ const style = technologyStyles[technology] ?? {
         class="flex size-3.5 items-center justify-center rounded-[0.2rem] bg-(--technology-color) text-[0.47rem] leading-none font-black text-white"
         aria-hidden="true"
       >
-        {technology === "TypeScript" ? "TS" : "JS"}
+        {technology === "TypeScript"
+          ? "TS"
+          : technology === "Vitest"
+            ? "VT"
+            : technology === "Zustand"
+              ? "Z"
+              : "JS"}
       </span>
     )
   }
