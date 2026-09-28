@@ -1,39 +1,39 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import Container from './shared/Container.astro';
-import aiAppliedImage from '@/assets/images/about/ia-aplicada.webp';
-import frontendJudgementImage from '@/assets/images/about/frontend-criterio.webp';
-import productLearningImage from '@/assets/images/about/producto-aprendizaje.webp';
-import Badge from './shared/Badge.astro';
+import Container from "./shared/Container.astro";
+import aiAppliedImage from "@/assets/images/about/ia-aplicada.webp";
+import frontendJudgementImage from "@/assets/images/about/frontend-criterio.webp";
+import productLearningImage from "@/assets/images/about/producto-aprendizaje.webp";
+import Badge from "./shared/Badge.astro";
 
 const highlights = [
   {
-    title: 'Producto y aprendizaje',
+    title: "Producto y aprendizaje",
     description:
-      'He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.',
+      "He desarrollado aplicaciones y herramientas internas para entornos de formación, con foco en que el contenido sea práctico, claro y fácil de mantener.",
     image: productLearningImage,
     imageAlt:
-      'Icono 3D de aprendizaje práctico con cuaderno, ventana de aplicación y bloques de producto',
-    accent: '#14b8a6',
+      "Icono 3D de aprendizaje práctico con cuaderno, ventana de aplicación y bloques de producto",
+    accent: "#14b8a6",
   },
   {
-    title: 'Frontend con criterio',
+    title: "Frontend con criterio",
     description:
-      'Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro.',
+      "Trabajo la estructura, la accesibilidad y la experiencia de usuario desde la implementación: HTML, CSS, Tailwind, JavaScript, TypeScript, React y Astro. Actualmente estoy ampliando mi perfil hacia desarrollo móvil con React Native y Expo.",
     image: frontendJudgementImage,
     imageAlt:
-      'Icono 3D de frontend con ventana web, capas de interfaz, cursor y símbolo de accesibilidad',
-    accent: '#2563eb',
+      "Icono 3D de frontend con ventana web, capas de interfaz, cursor y símbolo de accesibilidad",
+    accent: "#2563eb",
   },
   {
-    title: 'IA aplicada',
+    title: "IA aplicada",
     description:
-      'Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.',
+      "Integro herramientas como Codex, Claude Code, Windsurf y GitHub Copilot para acelerar análisis, refactorización, documentación y validación técnica.",
     image: aiAppliedImage,
     imageAlt:
-      'Icono 3D de IA aplicada con red neuronal, código, documentación y validación técnica',
-    accent: '#f59e0b',
+      "Icono 3D de IA aplicada con red neuronal, código, documentación y validación técnica",
+    accent: "#f59e0b",
   },
 ];
 ---
@@ -55,7 +55,7 @@ const highlights = [
         </h2>
         <ul class="mt-6 flex flex-wrap gap-2" aria-label="Forma de trabajar">
           {
-            ['Autonomía', 'Criterio', 'Detalle visual'].map((quality) => (
+            ["Autonomía", "Criterio", "Detalle visual"].map((quality) => (
               <li>
                 <Badge>{quality}</Badge>
               </li>
@@ -90,9 +90,9 @@ const highlights = [
           ({ title, description, image, imageAlt, accent }, index) => (
             <article
               class:list={[
-                'view-reveal group border-border bg-surface-elevated shadow-sjr relative isolate rounded-3xl border p-5 pt-16 transition duration-300 [corner-shape:squircle] motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-lg motion-reduce:transition-none sm:pt-20',
+                "view-reveal group border-border bg-surface-elevated shadow-sjr relative isolate rounded-3xl border p-5 pt-16 transition duration-300 [corner-shape:squircle] motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-lg motion-reduce:transition-none sm:pt-20",
                 index === 1 &&
-                  'motion-safe:hover:translate-y-7 md:translate-y-8',
+                  "motion-safe:hover:translate-y-7 md:translate-y-8",
               ]}
               style={`--about-accent: ${accent}`}
             >
@@ -116,7 +116,7 @@ const highlights = [
               </h3>
               <p class="text-muted leading-6 text-pretty">{description}</p>
             </article>
-          )
+          ),
         )
       }
     </div>
